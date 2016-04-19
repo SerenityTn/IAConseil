@@ -5,7 +5,7 @@
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form action="" method="post">
 			<fieldset>
-				<h2>Connexion Administrateur</h2>				
+				<h2>Connexion Conseiller</h2>				
 				<hr class="colorgraph">
 				<div class="form-group">
                     <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Adresse Email">

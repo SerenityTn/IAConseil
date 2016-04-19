@@ -57,8 +57,8 @@
 					<div id="manage-lvl1" class="panel-collapse collapse">
 						<div class="panel-body">
 							<ul class="nav navbar-nav">
-								<li><a href="advisor/ia_questions">Questions IA</a></li>
-								<li><a href="#">Link</a></li>
+								<li><a href="{{ route('advisor.questions', ['type'=>'client']) }}">Questions Clients</a></li>
+								<li><a href="{{ route('advisor.questions', ['type'=>'IA']) }}">Questions IA</a></li>								
 								<li><a href="#">Link</a></li>
 							</ul>
 						</div>

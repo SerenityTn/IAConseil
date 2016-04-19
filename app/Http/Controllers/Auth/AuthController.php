@@ -27,7 +27,7 @@ class AuthController extends Controller
      * Where to redirect users after login / registration.
      *
      * @var string
-     */
+     */    
     protected $redirectTo = '/';
 
     /**
@@ -35,8 +35,7 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){    	
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
@@ -46,13 +45,23 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data){
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'nom' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+    }
+    
+    protected function authenticated($request, $user){    	
+    	if($user->role == 1) {    		
+    		return redirect()->intended('/admin');
+    	}else if($user->role == 2){
+    		return redirect()->intended('/advisor');
+    	}else{
+    		return redirect()->intended('/client');
+    	}
+    	return redirect()->intended('/');
     }
 
     /**
@@ -61,12 +70,7 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+    protected function create(array $data){    	    
+        return User::create($data);
     }
 }

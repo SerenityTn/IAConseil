@@ -41,14 +41,34 @@
 		<!-- Main Menu -->	
 		<div class="side-menu-container">
 			<ul class="nav navbar-nav">				
-				<li class="active"><a href="#"><span
-						class="glyphicon glyphicon-question-sign"></span> Poser une question</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-stats"></span> Historiques</a></li>
+				<li {{{ (Request::is('client') ? 'class=active' : '') }}}>
+					<a href="{{ route('client.index') }}">
+					<span class="glyphicon glyphicon-home"></span> 
+					Accueil
+					</a>
+				</li>					
+				<li {{{ (Request::is('client.questions') ? 'class=active' : '') }}}>
+					<a href="{{ route('client.question.create') }}">
+					<span class="glyphicon glyphicon-question-sign"></span> 
+					Poser une question
+					</a>
+				</li>
+				<li {{{ (Request::is('question.create') ? 'class=active' : '') }}}>
+					<a href="{{ route('client.questions') }}">
+					<span class="glyphicon glyphicon-th-list"></span> 
+					Mes questions
+					</a>
+				</li>								
+				<li>
+					<a href="{{ route('client.stats') }}">
+					<span class="glyphicon glyphicon-stats"></span> 
+					Statistiques</a></li>
 
 				<!-- Dropdown-->
 				<li class="panel panel-default" id="dropdown">
 				<a data-toggle="collapse" href="#dropdown-lvl1">
-					<span class="glyphicon glyphicon-user"></span> Mon compte
+					<span class="glyphicon glyphicon-user"></span>
+					 Mon compte
 					<span class="caret"></span>
 				</a>
 				<!-- Dropdown level 1 -->
@@ -56,24 +76,7 @@
 						<div class="panel-body">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-								
-								<!-- Dropdown level 2 -->
-								<li class="panel panel-default" id="dropdown"><a
-									data-toggle="collapse" href="#dropdown-lvl2"> <span
-										class="glyphicon glyphicon-off"></span> Sub Level <span
-										class="caret"></span>
-								</a>
-									<div id="dropdown-lvl2" class="panel-collapse collapse">
-										<div class="panel-body">
-											<ul class="nav navbar-nav">
-												<li><a href="#">Link</a></li>
-												<li><a href="#">Link</a></li>
-												<li><a href="#">Link</a></li>
-											</ul>
-										</div>
-									</div></li>
+								<li><a href="#">Link</a></li>																						
 							</ul>
 						</div>
 					</div></li>

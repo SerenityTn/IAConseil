@@ -2,12 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
+use Request;
+use Illuminate\Support\Facades\Input;
 
-use App\Http\Requests;
-
-class UsersController extends Controller{
-	public function store(Request $request){
-		return $request->all();	
+class UsersController extends Controller{	
+	
+	public function create(){
+		
+	}
+	
+	public function store(Request $request){		
+		User::create(Request::all());		
+		return Request::all();
+	}
+	
+	public function edit($id){
+		$user = User::find($id);
+		return view('admin.user_edit', compact('user'));
+	}
+	
+	public function update($id){
+		$rules = array(
+				'nom'       => 'required',
+				'email'      => 'required|email',				
+		);		
+		$validator = validator()->make(Input::all(), $rules);
+		if ($validator->fails()) {
+			return redirect()->to(route(['user.edit', $id]))
+			->withErrors($validator)
+			->withInput(input());
+		}else{
+			$user = User::find($id);
+			$user->fill(Input::all());
+			$user->save();
+			return redirect()->to(route('admin.manage.users'));
+		}		
+	}
+	
+	public function delete($id){
+		$user = User::find($id);
+		$user->delete();
+		
+		return redirect()->to(route('admin.manage.users'));		
 	}
 }
