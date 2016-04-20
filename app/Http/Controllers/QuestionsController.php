@@ -32,12 +32,12 @@ class QuestionsController extends Controller{
 	
 	public function getResponses($q){
 		$q = DB::connection()->getPdo()->quote($q);
-		$responses = DB::table('questions')->where('is_ia', 1)
+		$responses = DB::table('questions')->where('is_ia', 1) //question ia
 										 ->whereRaw("MATCH(content)
 										 AGAINST (".$q." IN NATURAL LANGUAGE MODE)")
 											 ->whereRaw("MATCH (content)
 													AGAINST (".$q." IN NATURAL LANGUAGE MODE)"
-											 		)->orderBy('score', 'desc')->take(5);
+											 		)->orderBy('score', 'desc')->take(3);
 		return $responses->get(
 				['id', \DB::raw("MATCH (content) AGAINST (".$q.") AS score")		
 		]);

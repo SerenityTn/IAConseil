@@ -16,16 +16,16 @@ class AdvisorsController extends Controller{
 	public function questions_index($type){
 		if($type == "IA"){
 			$iaquestions = Question::where('is_ia', 1)->get();
-			return view('advisor.iaquestions', compact('iaquestions'));
-		}else{
+			return view('advisor.question.iaquestions', compact('iaquestions'));
+		}else{			
 			$questions = Question::where('is_ia', 0)->get();
-			return view('advisor.questions', compact('questions'));
+			return view('advisor.question.questions', compact('questions'));
 		}
 	}
 	
 	public function create_question() {		
 		$responses = Response::lists('text','id');		
-		return view('advisor.question_create', compact('responses'));		
+		return view('advisor.questions.question_create', compact('responses'));		
 	}
 	
 	public function show_question($id) {

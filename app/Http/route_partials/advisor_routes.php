@@ -26,4 +26,6 @@ Route::group ( ['middleware'=> 'advisorAuth', 'prefix' => "advisor"], function (
 			'as' => 'advisor.question.edit',
 			'uses' => 'AdvisorsController@edit_question'
 	] );
+	
+	Route::resource('article', 'ArticlesController');
 } );

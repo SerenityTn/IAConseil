@@ -13,8 +13,8 @@ Route::group(['middleware'=> 'adminAuth', 'prefix' => 'admin'], function(){
 				'uses' => 'AdminsController@manage_users'
 			]);
 			Route::get('/{id}/edit',[
-				'as' => 'admin.manage.edit_user',
-				'uses' => 'AdminsController@edit_user'
+				'as' => 'admin.manage.user.edit',
+				'uses' => 'UsersController@edit'
 			]);		
 		});
 			
@@ -24,5 +24,6 @@ Route::group(['middleware'=> 'adminAuth', 'prefix' => 'admin'], function(){
 				'uses' => 'AdminsController@manage_messages'
 			]);
 		});		
+				
 	});
 });

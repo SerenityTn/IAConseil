@@ -13,7 +13,7 @@ class Question extends Model{
 	}
 
 	public function responses(){
-		return $this->belongsToMany("App\Response")->withPivot('score')->orderBy('score', 'asc');
+		return $this->belongsToMany("App\Response")->withPivot('score')->orderBy('score', 'desc');
 	}
 	
 	public function firstResponse(){

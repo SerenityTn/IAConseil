@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Request;
 use Illuminate\Support\Facades\Input;
+use Request;
 
 class UsersController extends Controller{	
 	
@@ -19,7 +19,7 @@ class UsersController extends Controller{
 	
 	public function edit($id){
 		$user = User::find($id);
-		return view('admin.user_edit', compact('user'));
+		return view('user.edit', compact('user'));
 	}
 	
 	public function update($id){

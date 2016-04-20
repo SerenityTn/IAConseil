@@ -28,7 +28,7 @@
 				<td>{{ $user->role }}</td>	
 				<td><a href ="#">Consulter</a></td>											
 				<td>				
-					<a href="{{ route('user.edit', [$user->id]) }}" class = "btn btn-primary">
+					<a href="{{ route('admin.manage.user.edit', [$user->id]) }}" class = "btn btn-primary">
                     	<span class="glyphicon glyphicon-pencil"></span>
                     </a>                  
 					<!-- 
