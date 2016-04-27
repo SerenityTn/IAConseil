@@ -24,9 +24,9 @@ class User extends Authenticatable{
     ];
     
     public function questions(){
-    	return $this->hasMany('App\Question');
+    	return $this->hasMany('App\Question')->latest();
     }
-    
+        
     public function setPasswordAttribute($value){
     	$this->attributes['password'] = bcrypt($value);
     }

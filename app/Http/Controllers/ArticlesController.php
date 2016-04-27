@@ -17,6 +17,12 @@ class ArticlesController extends Controller{
 		return view('advisor.article.index');
 	}
 	
+	public function show_public($id){
+		$article = Article::find($id);
+		$articles = Article::all();
+		return view('public.news.show_article', compact('article'), compact('articles'));
+	}
+	
 	public function create(){
 		$themes = Theme::all();
 		return view('advisor.article.create', compact('themes'));

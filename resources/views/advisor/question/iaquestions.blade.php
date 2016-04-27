@@ -2,16 +2,16 @@
 @section('body')
 <div class="well"><h1>Liste des questions IA</h1></div>
 <div class="button-group">
-	<a href="{{ route('advisor.question.create') }}" class="btn btn-primary">
+	<a href="{{ route('advisor.iaquestions.create') }}" class="btn btn-primary">
 		<span class="glyphicon glyphicon-plus"></span>
 		&nbsp;Nouveau
 	</a>
-	<a href="{{ route('advisor.question.create') }}" class="btn btn-info ">
+	<a href="{{ route('advisor.iaquestions.create') }}" class="btn btn-info ">
 		<span class="glyphicon glyphicon-pencil"></span>
 		&nbsp;Modifier Questions & Réponses
 	</a>
 </div>
-
+<hr/>
 <div class="table-responsive">
 	<table id="mytable" class="table table-bordred table-striped">
 		<thead>
@@ -30,14 +30,13 @@
 				<td>{{ $iaq->responses->isEmpty() ? "Aucune réponse n'est affecté" : $iaq->responses()->first()->text }}</td>
 				<td>
 					<p data-placement="top" data-toggle="tooltip" title="Modifier">
-						<button class="btn btn-primary btn-xs" data-title="Modifier"
-							data-toggle="modal" data-target="#edit">
+						<button class="btn btn-primary">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</button>
 					</p>
 				</td>
 				<td>
-				{{ Form::open(array('route' => ['question.delete', $iaq->id])) }}
+				{{ Form::open(array('route' => ['advisor.iaquestions.destroy', $iaq->id])) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     <button type="submit" class = "btn btn-danger">
                     	<span class="glyphicon glyphicon-trash"></span>
@@ -45,7 +44,7 @@
                 {{ Form::close() }}	
 				</td>
 			</tr>
-			@endforeach			
+			@endforeach
 		</tbody>
 	</table>
 

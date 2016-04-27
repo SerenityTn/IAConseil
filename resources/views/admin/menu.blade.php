@@ -50,8 +50,8 @@
 					<div id="manage-lvl1" class="panel-collapse collapse">
 						<div class="panel-body">
 							<ul class="nav navbar-nav">
-								<li><a href="{{ route('admin.manage.users') }}">Utilisateurs</a></li>
-								<li><a href="{{ route('admin.manage.messages') }}">Messages</a></li>
+								<li><a href="{{ route('admin.manage.users.index') }}">Utilisateurs</a></li>
+								<li><a href="{{ route('admin.manage.messages.index') }}">Messages</a></li>
 							</ul>
 						</div>
 					</div>

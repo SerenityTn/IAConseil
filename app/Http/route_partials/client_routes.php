@@ -1,35 +1,26 @@
 <?php
 Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () {
 	Route::get ( '/', [
-			'as' => 'client.index',
-			'uses' => 'ClientsController@index'
+			'as' => 'client.index', function(){
+				return view('client.index');
+			}
 	] );
 	
-	Route::get ( 'stats', [
-			'as' => 'client.stats',
-			'uses' => 'ClientsController@stats'
+	Route::get ( 'stats', ['as' => 'client.stats', function(){
+				return view('client.statistiques');
+			}
 	] );
+
 	
-	Route::get ( 'questions', [
-			'as' => 'client.questions',
-			'uses' => 'ClientsController@questions'
-	] );
+	Route::group(['prefix' => 'account'], function(){
+		Route::get ( '/', ['as' => 'client.stats', function(){
+			return view('client.statistiques');
+		}
+		] );
+	});	
 	
-	Route::get ( 'questions/create', [
-			'as' => 'client.question.create',
-			'uses' => 'ClientsController@create_question'
-	] );
-	
-	Route::get ( 'questions/{id}/edit', [
-			'as' => 'client.question.edit',
-			'uses' => 'ClientsController@edit_question'
-	] );
-	
-	Route::get ( 'questions/{id}', [
-			'as' => 'client.question.show',
-			'uses' => 'QuestionsController@show_question'
-	] );
-	
+	Route::resource('questions', 'ClientQuestionsController');
+		
 	Route::post( 'questions/response', [
 			'as' => 'client.question.show_reponses',
 			'uses' => 'ClientController@show_responses'

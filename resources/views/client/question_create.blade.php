@@ -1,6 +1,6 @@
 @extends('client.layout')
 @section('body')	
-{!! Form::open(['route'=>'question.store']) !!}	
+{!! Form::open(['route'=>'client.questions.store']) !!}	
 	<div class="panel-heading">
 		<h4>Poser une question ?</h4>
 	</div>

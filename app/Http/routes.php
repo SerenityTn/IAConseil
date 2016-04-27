@@ -1,7 +1,7 @@
 <?php
 
 Route::auth();
-$route_partials = ['public', 'users', 'client', 'advisor', 'admin', 'question']; 
+$route_partials = ['public', 'users', 'client', 'advisor', 'admin']; 
 
 foreach($route_partials as $partial){
 	$file = __DIR__.'/route_partials/'.$partial.'_routes.php';

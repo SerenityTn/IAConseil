@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Question extends Model{	
 	protected $fillable = ['content','key_content','is_ia'];
@@ -19,6 +20,19 @@ class Question extends Model{
 	public function firstResponse(){
 		return $this->responses()->first();
 	}
+	
+	public function getMatch($q){
+		$q = DB::connection()->getPdo()->quote($q);
+		$responses = DB::table('questions')->where('is_ia', 1) //question ia
+		->whereRaw("MATCH(content)
+		AGAINST (".$q." IN NATURAL LANGUAGE MODE)")
+			->whereRaw("MATCH (content)
+			AGAINST (".$q." IN NATURAL LANGUAGE MODE)")
+				->orderBy('score', 'desc')->take(3);
+	
+				return $responses->get(['id', \DB::raw("MATCH (content) AGAINST (".$q.") AS score")]);
+	}
+	
 	
 	public function user(){
 		return $this->belongsTo('App\User');		

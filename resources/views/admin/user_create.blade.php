@@ -1,9 +1,12 @@
 @extends('admin.layout')
-@section('body')
- <div class="well"><h2>Modifier l'utilisateur {{ Auth::user()->nom }}</h2></div>
- {{ Form::model($user, ['route' => ['user.update', $user->id]]) }}
-                     {{ Form::hidden('_method', 'PUT') }}
- 					<div class="col-sm-12">					
+@section('body')	
+		<div >
+			<legend>Créer un nouveau utilisateur</legend>
+			<div class="well">
+				<div class="row">
+<!-- fields{nom, prenom, email*, tel, password*, confirm_password*, ville, adresse, societe, site_web  -->								
+					{!! Form::open(['route'=>'admin.manage.users.store']) !!}
+					<div class="col-sm-12">					
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								{!! Form::label('nom', 'Nom*') !!}
@@ -32,7 +35,27 @@
 							<div class="col-sm-6 form-group">{!! Form::label('tel',
 								'Téléphone*') !!} {!! Form::text('tel', null, ['class' =>
 								'form-control']) !!}</div>
-						</div>											
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								{!! Form::label('password', 'Mot de passe*') !!}
+								{!! Form::password('password', ['class' => 'form-control']) !!}
+                               @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                               @endif									
+							</div>							
+							<div class="col-sm-6 form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+								{!! Form::label('password', 'Confirmation de mot de passe*') !!}
+								{!! Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required']) !!}
+                            	@if ($errors->has('password_confirmation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                               @endif									
+							</div> 						
+						</div>						
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								{!! Form::label('ville','Ville*') !!}
@@ -56,17 +79,22 @@
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								{!! Form::label('role', 'Role') !!}
-								{!! Form::text('role', null, ['class' => 'form-control']) !!}
-							</div>							
-						</div>
+								{!! Form::select('role', ["1"=>"Administrateur", "2" => "Expert", "3" => "Client"], null, ['class' => 'form-control']) !!}
+							</div>			
+						</div>						
 						<div class="row">
 							<div class="col-sm-3 form-group">
 								{!! Form::submit('Confirmer', ['class' => 'form-control btn btn-success']) !!}
 							</div>
 							<div class="col-sm-3 form-group">
-								{!! Form::reset('Annuler', ['class' => 'form-control btn btn-warning']) !!}							
+								{!! Form::reset('Annuler', ['class' => 'form-control btn btn-warning']) !!}
 							</div>
 						</div>
+					</div>
+					{!! Form::close() !!}
 				</div>
-				{!! Form::close() !!}
-@stop
+			</div>
+		</div>
+@section('scripts')
+<script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script>
+@stop @stop

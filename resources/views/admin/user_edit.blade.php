@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('body')
  <div class="well"><h2>Modifier l'utilisateur {{ Auth::user()->nom }}</h2></div>
- {{ Form::model($user, ['route' => ['user.update', $user->id]]) }}
+ {{ Form::model($user, ['route' => ['admin.manage.users.update', $user->id]]) }}
                      {{ Form::hidden('_method', 'PUT') }}
  					<div class="col-sm-12">					
 						<div class="row">
@@ -56,7 +56,7 @@
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								{!! Form::label('role', 'Role') !!}
-								{!! Form::text('role', null, ['class' => 'form-control']) !!}
+								{!! Form::select('role', ["1"=>"Administrateur", "2" => "Expert", "3" => "Client"], null, ['class' => 'form-control']) !!}
 							</div>							
 						</div>
 						<div class="row">

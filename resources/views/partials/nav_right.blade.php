@@ -1,9 +1,9 @@
 @if(Auth::check())
 	<?php
 		$role = 'client.index';	 
-		if($role == 1)
+		if(auth()->user()->role == 1)
 			$role = 'admin.index';
-		else if($role == 2)
+		else if(auth()->user()->role == 2)
 			$role = 'advisor.index';		
 	?>	
 	

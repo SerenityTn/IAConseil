@@ -48,13 +48,13 @@
 					</a>
 				</li>					
 				<li {{{ (Request::is('client.questions') ? 'class=active' : '') }}}>
-					<a href="{{ route('client.question.create') }}">
+					<a href="{{ route('client.questions.create') }}">
 					<span class="glyphicon glyphicon-question-sign"></span> 
 					Poser une question
 					</a>
 				</li>
 				<li {{{ (Request::is('question.create') ? 'class=active' : '') }}}>
-					<a href="{{ route('client.questions') }}">
+					<a href="{{ route('client.questions.index') }}">
 					<span class="glyphicon glyphicon-th-list"></span> 
 					Mes questions
 					</a>
@@ -63,24 +63,13 @@
 					<a href="{{ route('client.stats') }}">
 					<span class="glyphicon glyphicon-stats"></span> 
 					Statistiques</a></li>
-
-				<!-- Dropdown-->
-				<li class="panel panel-default" id="dropdown">
-				<a data-toggle="collapse" href="#dropdown-lvl1">
-					<span class="glyphicon glyphicon-user"></span>
-					 Mon compte
-					<span class="caret"></span>
-				</a>
-				<!-- Dropdown level 1 -->
-					<div id="dropdown-lvl1" class="panel-collapse collapse">
-						<div class="panel-body">
-							<ul class="nav navbar-nav">
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>																						
-							</ul>
-						</div>
-					</div></li>
-
+				
+				<li {{{ (Request::is('question.create') ? 'class = active' : '') }}}>
+					<a href="#">
+						<span class="glyphicon glyphicon-user"></span>
+						 Mon compte
+					</a>								
+				</li>
 				<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Paramètres</a></li>
 			</ul>
 		</div>

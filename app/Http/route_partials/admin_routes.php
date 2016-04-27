@@ -1,29 +1,15 @@
 <?php
 Route::group(['middleware'=> 'adminAuth', 'prefix' => 'admin'], function(){
-	Route::get('/',[
-			'as' => 'admin',
-			'uses' => 'AdminsController@index'
-	]);
+	
+	Route::get('/',['as'=>'admin.index',function(){
+		return view('admin.index');
+	}]);
 	
 	Route::group(['prefix' => 'manage'], function(){
 		
-		Route::group(['prefix' => 'users'], function(){
-			Route::get('/',[
-				'as' => 'admin.manage.users',
-				'uses' => 'AdminsController@manage_users'
-			]);
-			Route::get('/{id}/edit',[
-				'as' => 'admin.manage.user.edit',
-				'uses' => 'UsersController@edit'
-			]);		
-		});
-			
-		Route::group(['prefix' => 'messages'], function(){
-			Route::get('/manage/messages',[
-				'as' => 'admin.manage.messages',
-				'uses' => 'AdminsController@manage_messages'
-			]);
-		});		
-				
+		Route::resource('users', 'UsersController');			
+		Route::resource('messages', 'MessagesController',
+				['only' => ['index', 'show', 'destroy']]);
+	
 	});
 });

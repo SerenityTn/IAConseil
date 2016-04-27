@@ -22,7 +22,7 @@
 					@endif
 				</td>
 				<td>
-					{{ Form::open(array('route' => ['question.delete', $question->id])) }}
+					{{ Form::open(array('route' => ['client.questions.destroy', $question->id])) }}
                     {{ Form::hidden('_method', 'DELETE') }}
 	                    <button type="submit" class = "btn btn-danger">
 	                    	<span class="glyphicon glyphicon-trash"></span>

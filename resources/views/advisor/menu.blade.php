@@ -56,8 +56,8 @@
 					<div id="manage-lvl1" class="panel-collapse collapse">
 						<div class="panel-body">
 							<ul class="nav navbar-nav">
-								<li><a href="{{ route('advisor.questions', ['type'=>'client']) }}">Questions Clients</a></li>
-								<li><a href="{{ route('advisor.questions', ['type'=>'IA']) }}">Questions IA</a></li>
+								<li><a href="{{ route('advisor.client_questions.index') }}">Questions Clients</a></li>
+								<li><a href="{{ route('advisor.iaquestions.index') }}">Questions IA</a></li>
 								<li><a href="{{ route('advisor.article.index') }}">Publications</a></li>																								
 							</ul>
 						</div>

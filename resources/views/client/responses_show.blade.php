@@ -5,7 +5,7 @@
 	</div>
 	<div class="well">
 		<p>
-			{{ $q }}
+			{{ $question_content }}
 		</p>
 	</div>	
 
@@ -20,14 +20,15 @@
 		<div class="well">
 			@foreach ($sq as $q)
 				<?php
-					$question = App\Question::find($q->id);							
-					$rep = $question->responses()->first();							
+					$question = App\Question::find($q->id);					
+					$rep = $question->responses()->first();					
 				?>
+				
 				@if(!is_null($rep))
 				<div class="row">
 					<div class="col-md-12">					
-						<p>
-							{{ $rep->text }}
+						<p>						
+							{{ $rep->text }}												
 						<span class="pull-right">{{ $q->score }}</span></p>												
 					</div>
 				</div>					
