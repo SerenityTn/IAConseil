@@ -16,8 +16,8 @@ class CreateQuestionsTable extends Migration{
             $table->foreign ( "user_id" )->references ( 'id' )->on ( 'users' )->onDelete ( 'cascade' );
             $table->text('content');
             $table->string('key_content');
-            $table->string('state');
-            $table->tinyInteger("is_ia")->default(0);
+            $table->boolean('state');
+            $table->boolean("is_ia")->default(false);
 			$table->timestamps ();			
 			$table->index('key_content');					
 		} );

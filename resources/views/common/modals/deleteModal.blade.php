@@ -1,4 +1,4 @@
-<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
 	aria-labelledby="edit" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -12,17 +12,16 @@
 			<div class="modal-body">
 
 				<div class="alert alert-danger">
-					<span class="glyphicon glyphicon-warning-sign"></span> Are you sure
-					you want to delete this Record?
+					<span class="glyphicon glyphicon-warning-sign"></span> {{ $message }}
 				</div>
 
 			</div>
 			<div class="modal-footer ">
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-ok-sign"></span> Yes
+				<button onclick="" type="button" class="btn btn-success">
+					<span class="glyphicon glyphicon-ok-sign"></span> Oui
 				</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">
-					<span class="glyphicon glyphicon-remove"></span> No
+					<span class="glyphicon glyphicon-remove"></span> Non
 				</button>
 			</div>
 		</div>

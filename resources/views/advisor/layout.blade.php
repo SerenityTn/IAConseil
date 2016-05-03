@@ -2,3 +2,7 @@
 @section('menu')
 	@include('advisor.menu')
 @stop
+@section('scripts')
+	<script type="text/javascript" src="{{ URL::asset('js/advisor/ia_questions.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/advisor/client_questions.js') }}"></script>
+@stop

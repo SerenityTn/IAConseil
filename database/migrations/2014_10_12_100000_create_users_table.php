@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration {
 			$table->string ( 'ville' );			
 			$table->string ( 'societe' );
 			$table->string ( 'tel' );
-			$table->string ( 'web_site' );
+			$table->string ( 'site_web' );
 			$table->integer ( 'role' )->default(3);
 			$table->rememberToken ();
 			$table->timestamps ();

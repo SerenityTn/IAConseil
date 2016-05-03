@@ -6,7 +6,7 @@
 		<form action="{{ url('/login') }}" method="post">
 			{!! csrf_field() !!}
 			<fieldset>
-				<h2>Connexion Client</h2>				
+				<h2>Connexion</h2>				
 				<hr class="colorgraph">
 				<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 					<input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control input-lg" placeholder="Adresse Email">

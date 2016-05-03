@@ -12,8 +12,8 @@ class QuestionsTableSeeder extends Seeder{
      */
     public function run(){
     	mb_regex_encoding('UTF-8');    	 
-    	$user = User::find(1);   
-    	for($k = 1; $k < 2; $k++){
+    	$user = User::find(1);
+    	for($k = 1; $k <= 1; $k++){
     		$dom = new DOMDocument();
 	    	$dom->loadHTMLFile("/home/serenity/Desktop/Serenity/database/QR/affaires".$k.".html");
 	    	$values = preg_split("[<h3>|</h3>]", $dom->saveHTML());       	

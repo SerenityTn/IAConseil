@@ -17,20 +17,17 @@ class Question extends Model{
 		return $this->belongsToMany("App\Response")->withPivot('score')->orderBy('score', 'desc');
 	}
 	
-	public function firstResponse(){
+	public function response(){
 		return $this->responses()->first();
 	}
 	
 	public function getMatch($q){
 		$q = DB::connection()->getPdo()->quote($q);
-		$responses = DB::table('questions')->where('is_ia', 1) //question ia
+		$similar_questions = DB::table('questions')->where('is_ia', 1) //question ia
 		->whereRaw("MATCH(content)
-		AGAINST (".$q." IN NATURAL LANGUAGE MODE)")
-			->whereRaw("MATCH (content)
-			AGAINST (".$q." IN NATURAL LANGUAGE MODE)")
-				->orderBy('score', 'desc')->take(3);
+		AGAINST (".$q." IN BOOLEAN MODE)")->orderBy('score', 'desc')->take(3);
 	
-				return $responses->get(['id', \DB::raw("MATCH (content) AGAINST (".$q.") AS score")]);
+		return $similar_questions->get(['id', \DB::raw("MATCH (content) AGAINST (".$q.") AS score")]);
 	}
 	
 	

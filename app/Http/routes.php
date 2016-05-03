@@ -14,4 +14,6 @@ foreach($route_partials as $partial){
 }
 
 
-	
+Route::group(['prefix' => 'user', 'middlware' => 'auth'], function(){
+	Route::resource('profile', 'ProfileController', ['only' => ['show', 'edit', 'update']]);
+});

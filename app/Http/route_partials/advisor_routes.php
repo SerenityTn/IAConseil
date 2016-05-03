@@ -6,10 +6,12 @@ Route::group ( ['middleware'=> 'advisorAuth', 'prefix' => "advisor"], function (
 			}
 	] );
 	
-	Route::resource('client_questions', 'ClientQuestionsController');
-	Route::post('client_questions', 'ClientQuestionsController@index');
-			
+	Route::group(['prefix' => 'questions'], function(){
+		Route::resource('client', 'CQuestionsController');
+		Route::resource('ia', 'IAQuestionsController');		
+	});
 	
-	Route::resource('iaquestions', 'IAQuestionsController');	
+	
+		
 	Route::resource('article', 'ArticlesController');
 } );

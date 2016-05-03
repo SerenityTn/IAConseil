@@ -5,11 +5,7 @@ Route::group(['middleware'=> 'adminAuth', 'prefix' => 'admin'], function(){
 		return view('admin.index');
 	}]);
 	
-	Route::group(['prefix' => 'manage'], function(){
+	Route::resource('users', 'UsersController');
 		
-		Route::resource('users', 'UsersController');			
-		Route::resource('messages', 'MessagesController',
-				['only' => ['index', 'show', 'destroy']]);
-	
-	});
+	Route::resource('messages', 'MessagesController', ['only' => ['index', 'show', 'destroy']]);
 });

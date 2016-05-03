@@ -54,11 +54,14 @@ class AuthController extends Controller
     }
     
     protected function authenticated($request, $user){    	
-    	if($user->role == 1) {    		
+    	if($user->role == 1) {
+    		session()->put('role', 'admin');
     		return redirect()->intended('/admin');
     	}else if($user->role == 2){
+    		session()->put('role', 'advisor');
     		return redirect()->intended('/advisor');
     	}else{
+    		session()->put('role', 'client');
     		return redirect()->intended('/client');
     	}
     	return redirect()->intended('/');
