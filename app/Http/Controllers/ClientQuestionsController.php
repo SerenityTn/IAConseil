@@ -24,11 +24,17 @@ class ClientQuestionsController extends QuestionsController {
 		return view('client.questions.similar_questions', compact('sqs'), compact('question'));
 	}
 	
-	public function assign_response($question_id){
+	public function attach_response($question_id){
 		$question = Question::find($question_id);
-		$response = Question::find(request()->input('response_id'));
-		
+		$response = Question::find(request()->input('response_id'));		
 		$question->responses()->attach($response, ['score' => request()->input('score')]);
+		return 'success';
+	}
+	
+	public function detach_response($question_id){
+		$question = Question::find($question_id);
+		$response_id = request()->input('response_id');	
+		$question->responses()->detach($response_id);
 		return 'success';
 	}
 	

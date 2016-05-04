@@ -11,10 +11,15 @@ Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () 
 	Route::get ( 'stats', ['as' => 'client.stats', function(){
 				return view('client.statistiques');
 			}
-	] );		
+	] );	
 		
 	Route::post( 'questions/{question_id}/response', [
 		'as' => 'client.question.response.assign',
-		'uses' => 'ClientQuestionsController@assign_response'
-	]);	
+		'uses' => 'ClientQuestionsController@attach_response'
+	]);
+	
+	Route::delete( 'questions/{question_id}/response/{response_id}', [
+			'as' => 'client.question.response.detach',
+			'uses' => 'ClientQuestionsController@detach_response'
+	]);
 } );

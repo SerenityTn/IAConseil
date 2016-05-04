@@ -2,6 +2,9 @@
 @section('title')
  Poser une question
 @stop
+@section('buttons')
+Feedback <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+@stop
 @section('body')		
 	<div class="form-group">		
 		<textarea class="form-control" required="required" placeholder="Question ?" id="content" rows="5"></textarea>
