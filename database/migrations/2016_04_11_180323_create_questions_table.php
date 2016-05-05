@@ -12,14 +12,14 @@ class CreateQuestionsTable extends Migration{
     public function up(){
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer("user_id")->unsigned()->index();
-            $table->foreign ( "user_id" )->references ( 'id' )->on ( 'users' )->onDelete ( 'cascade' );
+            $table->integer("user_id")->unsigned()->index();           
             $table->text('content');
             $table->string('key_content');
             $table->boolean('state');
             $table->boolean("is_ia")->default(false);
 			$table->timestamps ();			
-			$table->index('key_content');					
+			$table->index('key_content');
+			$table->engine = 'myISAM';
 		} );
         
         DB::statement('ALTER TABLE questions ADD FULLTEXT search(content)');
@@ -30,12 +30,9 @@ class CreateQuestionsTable extends Migration{
 			$table->timestamps ();			
 				
 		} );
-		
-		DB::statement('ALTER TABLE responses ADD FULLTEXT search(text)');
-		
+						
 		Schema::create ( 'question_response', function (Blueprint $table) {
-			$table->integer ( "question_id" )->unsigned ()->index ();
-			$table->foreign ( "question_id" )->references ( 'id' )->on ( 'questions' )->onDelete ( 'cascade' );
+			$table->integer ( "question_id" )->unsigned ()->index ();		
 			$table->integer ( "response_id" )->unsigned ()->index ();
 			$table->foreign ( "response_id" )->references ( 'id' )->on ( 'responses' )->onDelete ( 'cascade' );
 			$table->float( "score", 6 );			
@@ -52,10 +49,7 @@ class CreateQuestionsTable extends Migration{
     	Schema::table('questions', function($table) {    		
     		$table->dropIndex('search');    	
     	});    	
-        Schema::drop('questions');
-        Schema::table('responses', function($table) {
-        	$table->dropIndex('search');
-        });
+        Schema::drop('questions');        
         Schema::drop('responses');
     }
 }

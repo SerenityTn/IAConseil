@@ -11,8 +11,8 @@ class Question extends Model{
 	public function setKeycontentAttribute($content){		
 		$stopwords = file(storage_path()."/app/data/stopwords.txt", FILE_IGNORE_NEW_LINES);
 		$this->attributes['key_content'] = preg_replace('/\b('.implode('|',$stopwords).')\b/i ','',$content);
-	}
-
+	}	
+	
 	public function responses(){
 		return $this->belongsToMany("App\Response")->withPivot('score')->orderBy('score', 'desc');
 	}

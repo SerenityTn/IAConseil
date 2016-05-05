@@ -15,8 +15,8 @@ class QuestionsTableSeeder extends Seeder{
     	$user = User::find(1);
     	for($k = 1; $k <= 1; $k++){
     		$dom = new DOMDocument();
-	    	$dom->loadHTMLFile("/home/serenity/Desktop/Serenity/database/QR/affaires".$k.".html");
-	    	$values = preg_split("[<h3>|</h3>]", $dom->saveHTML());       	
+	    	$dom->loadHTML('<?xml encoding="utf-8" ?>'.file_get_contents(database_path()."/QR/affaires".$k.".html"));
+	    	$values = preg_split("[<h3>|</h3>]", $dom->saveHTML($dom->documentElement));       	
 	    	for($i = 0; $i < count($values)-1; $i+=2){
 	    		$question = new Question([
 	    				"content" => html_entity_decode(trim(strip_tags($values[$i]))),
