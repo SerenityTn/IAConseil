@@ -17,11 +17,11 @@
 
 #loading{
 	position: fixed;
-	top:54px;
+	top:0;	
 	width:100%;
 	text-align:center;
 	z-index:1;
-	background:#e2f6e0;
+	background:#00b700;
 	hieght:100px;	
 }
 

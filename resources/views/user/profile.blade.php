@@ -6,12 +6,7 @@
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">{{ auth()->user()->nom }}</h3>
-					</div>
-						@if (session('status'))
-	    					<div class="alert alert-success">
-					        {{ session('status') }}
-	    					</div>
-							@endif
+					</div>						
 					<div class="panel-body">
 						<div class="row">
 							<div class=" col-md-9 col-lg-9 ">

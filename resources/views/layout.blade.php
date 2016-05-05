@@ -14,6 +14,7 @@
 		<link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
 		<link href="{{ URL::asset('css/bootstrap.css') }}" rel="stylesheet">		
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
 	</head>
 
 	<body>
@@ -31,8 +32,7 @@
 				</div>
 			</div>
 		</nav>
-		@yield('container')		
-		<script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
+		@yield('container')				
 		<script type="text/javascript" src="{{ URL::asset('js/ajax.js') }}"></script>
 		<script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>				
 		<script type="text/javascript" src="{{ URL::asset('js/form/jquery.validate.min.js') }}"></script>

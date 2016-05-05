@@ -19,8 +19,10 @@
 					{{ session('status') }}
 				</div>
 			@endif
-		</div>         
-		@yield('body')                    
+		</div>
+		<div id="main"> 
+			@yield('body')
+		</div>                    
     </div>
     @include('modal')
 	@include('common.modals.deleteModal', ['message' => 'Voulez vous vraiement supprimer cet utilisateur ?'])

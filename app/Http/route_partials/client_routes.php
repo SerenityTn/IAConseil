@@ -8,11 +8,16 @@ Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () 
 	
 	Route::resource('questions', 'ClientQuestionsController');
 	
-	Route::get ( 'stats', ['as' => 'client.stats', function(){
-				return view('client.statistiques');
-			}
-	] );	
-		
+	Route::get('questions/filter/{state}', [
+			'as' => 'client.question.filter.state',
+			'uses' => 'ClientQuestionsController@filter_list'
+	]);
+	
+	Route::post('questions/{question_id}/feedback', [
+		'as' => 'client.question.feedback',
+		'uses' => 'ClientQuestionsController@save_feedback'
+	]);
+	
 	Route::post( 'questions/{question_id}/response', [
 		'as' => 'client.question.response.assign',
 		'uses' => 'ClientQuestionsController@attach_response'
@@ -27,4 +32,10 @@ Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () 
 			'as' => 'client.question.response.check',
 			'uses' => 'ClientQuestionsController@check_response'
 	]);
+	
+	Route::get ( 'stats', ['as' => 'client.stats', function(){
+		return view('client.statistiques');
+		}
+	]);
+	
 } );

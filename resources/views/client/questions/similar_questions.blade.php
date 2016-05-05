@@ -1,3 +1,4 @@
+<input id="question" type="hidden" value="{{ $question->id }}" feedback = "1"/>
 @if($sqs)
 	<legend>
 		Liste des questions similaires
@@ -41,8 +42,8 @@
 	});
 
 	//handle response
-	function show_response(btn){
-		$(btn).prev().show();
+	function show_response(btn){		
+		$(btn).prev().removeClass('hide');
 		$(btn).addClass('hide');
 	}
 	
@@ -62,6 +63,7 @@
 		}); 
 	}
 
+	
 	function remove_response(btn){		
 		var _response_id = $(event.target).prev().attr('response-id');
 		var _question_id = $(event.target).prev().attr('question-id');		

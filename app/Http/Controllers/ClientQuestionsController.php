@@ -14,6 +14,12 @@ class ClientQuestionsController extends QuestionsController {
 		return view('client.questions.index', compact('questions'));		
 	}
 	
+	public function filter_list($state){		
+		if($state == 1) $questions = auth()->user()->questions()->where('state', '=', '0')->paginate(5);
+		else $questions = auth()->user()->questions()->paginate(5);
+		return view('client.questions.list', compact('questions'));
+	}
+	
 	public function show($id) {
 		$question = Question::find($id);
 		return view('client.questions.show', compact('question'));
@@ -56,6 +62,14 @@ class ClientQuestionsController extends QuestionsController {
 			$similar_questions[] = ['question' => $question, 'score' => $result->score];
 		}
 		return $similar_questions;
+	}
+	
+	public function save_feedback($question_id){
+		$question = Question::find($question_id);
+		$note = request()->input('note');
+		$question->feedback = $note;
+		$question->save();
+		return $question->feedback;
 	}
 	
 	public function make_question($request){

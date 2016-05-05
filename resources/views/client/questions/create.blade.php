@@ -2,8 +2,11 @@
 @section('title')
  Poser une question
 @stop
+<?php $question_id = -1 ?>
 @section('buttons')
-Feedback <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+	<div id="avis" class="hide">
+		Vous êtes satisfait ? : @include('client.questions.feedback')
+	</div>
 @stop
 @section('body')		
 	<div class="form-group">		
@@ -13,5 +16,21 @@ Feedback <span class="glyphicon glyphicon-star"></span><span class="glyphicon gl
 		<button onclick = "ask()" class="btn btn-success">Envoyer</button>
 	</div>	
 	<div id="similar_questions">		
-	</div>
+	</div>	
 @stop
+
+<script type="text/javascript">
+	function ask(){
+		clear_stars();
+		$('#avis').removeClass('hide');
+		var content = $('#content').val();	
+		$.ajax({
+			type: 'POST',
+		    url: '/client/questions',	    	
+		    data: "content="+content,
+		    success: function(result) {	    	
+		    	$("#similar_questions").html(result);
+		    }
+		});
+	}
+</script>
