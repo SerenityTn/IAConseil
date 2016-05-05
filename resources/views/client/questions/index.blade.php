@@ -3,9 +3,7 @@
 	Liste des questions posées
 @stop
 @section('buttons')
-	<button class="btn btn-success">
-		Poser une question
-	</button>
+	@include('client.questions.filters')
 @stop
 @section('body')
 	<div class="table-responsive">
@@ -18,26 +16,27 @@
 			<thead>			
 				<th>Question</th>
 				<th>Réponse</th>
-				<th>&nbsp;</th>			
+				<th colspan="2"></th>			
 			</thead> 		
 			<tbody>
 				@foreach($questions as $question)
 				<tr>				
-					<td>{{ $question->content }}</td>
-							
+					<td>{{ $question->content }}</td>							
 					<td>
 						@if(!is_null($question->response()))
 							{{ $question->response()->text }}
 						@endif
 					</td>
-					<td>
-						{{ Form::open(array('route' => ['client.questions.destroy', $question->id])) }}
-	                    {{ Form::hidden('_method', 'DELETE') }}
-		                    <button type="submit" class = "btn btn-danger">
-		                    	<span class="glyphicon glyphicon-trash"></span>
-		                    </button>                    
-	                	{{ Form::close() }}	
-	               	</td>
+					<td>					
+						<button onclick="show_question({{ $question->id }})" data-toggle = "modal" data-target="#modal" class="btn btn-info">
+							<span class="glyphicon glyphicon-eye-open"></span>
+						</button>									
+	                </td>
+					<td>				
+						<button onclick="delete_question({{ $question->id }}, this)" data-toggle="modal" data-target="#delaeteModal" class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
 				</tr>
 				@endforeach			
 			</tbody>
@@ -48,3 +47,25 @@
 		</div>	
 	</div>
 @stop
+
+<script type="text/javascript">
+	function show_question(id){	
+		$(".modal-title").text('Détails question')
+		$(".modal-body").load('questions/' + id);	
+	}
+
+	function delete_question(id, btn){
+		$.ajax({
+		    url: 'questions/' + id,
+		    type: 'DELETE',
+		    success: function(result) {
+		    	$(btn).parent().parent().remove();
+		    	$("#notif").append("" +
+		    			"<div id='success-alert' class='alert alert-success fade in'>" +
+		    			" <a href='#' class='close' data-dismiss='alert' aria-label='close' title='close'>&times;</a>" +
+		    			" Question supprimé !</strong></div>"
+		    	);
+		    }
+		});
+	}
+</script>

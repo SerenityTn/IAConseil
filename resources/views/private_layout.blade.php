@@ -22,4 +22,6 @@
 		</div>         
 		@yield('body')                    
     </div>
+    @include('modal')
+	@include('common.modals.deleteModal', ['message' => 'Voulez vous vraiement supprimer cet utilisateur ?'])
 @stop

@@ -17,6 +17,9 @@
 	</head>
 
 	<body>
+		<div id="loading">
+		 	Loading
+		</div>
 		<nav class="navbar navbar-inverse">
 			<div class="container">
 				<div class="navbar-header">

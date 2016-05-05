@@ -1,6 +1,10 @@
-<legend>
-	Liste des questions similaires
-</legend>
+@if($sqs)
+	<legend>
+		Liste des questions similaires
+	</legend>
+@else
+	<b class="error">Auncune réponse similar trouvé !</b>
+@endif
 @foreach($sqs as $sq)
 	<div class="well">		
 		{{ $sq['question']->content }}		
@@ -21,6 +25,20 @@
 @endforeach
 
 <script type="text/javascript">
+	//init buttons
+	$(document).ready(function(){
+		$('.feedback').each(function(){
+			var btn = this;
+			var _response_id = $(this).attr('response-id');
+			var _question_id = $(this).attr('question-id');
+			/*
+			$.get(_question_id + '/response/' + _response_id, function(data){
+				if(data == 'true') disableBtn(btn);
+				console.log(data);				
+			}); 
+			*/
+		});
+	});
 
 	//handle response
 	function show_response(btn){

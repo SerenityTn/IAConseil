@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration{
             $table->string('key_content');
             $table->boolean('state');
             $table->boolean("is_ia")->default(false);
+            $table->interger('feedback');
 			$table->timestamps ();			
 			$table->index('key_content');
 			$table->engine = 'myISAM';

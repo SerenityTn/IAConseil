@@ -14,6 +14,11 @@ class ClientQuestionsController extends QuestionsController {
 		return view('client.questions.index', compact('questions'));		
 	}
 	
+	public function show($id) {
+		$question = Question::find($id);
+		return view('client.questions.show', compact('question'));
+	}
+	
 	public function create() {		
 		return view('client.questions.create');
 	}
@@ -31,11 +36,16 @@ class ClientQuestionsController extends QuestionsController {
 		return 'success';
 	}
 	
-	public function detach_response($question_id){
-		$question = Question::find($question_id);
-		$response_id = request()->input('response_id');	
+	public function detach_response($question_id, $response_id){
+		$question = Question::find($question_id);		
 		$question->responses()->detach($response_id);
 		return 'success';
+	}
+	
+	public function check_response($question_id, $response_id){
+		$question = Question::find($question_id);
+		if($question->responses->contains($response_id)) return "false";
+		return "true";		
 	}
 	
 	public function get_similar_questions($question){
@@ -57,9 +67,4 @@ class ClientQuestionsController extends QuestionsController {
 		auth()->user()->questions()->save($question);
 		return $question;
 	}								
-	
-	public function show($id) {
-		$question = Question::find($id); 
-		return view('client.question_show', compact('question'));
-	}		
 }

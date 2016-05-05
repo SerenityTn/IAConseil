@@ -43,5 +43,3 @@
 		{!! $ia_questions->links() !!}	
 	</div>	
 @stop
-@include('modal')
-@include('common.modals.deleteModal', ['message' => 'Voulez vous vraiement supprimer cette question ?'])

@@ -22,4 +22,9 @@ Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () 
 			'as' => 'client.question.response.detach',
 			'uses' => 'ClientQuestionsController@detach_response'
 	]);
+	
+	Route::get( 'questions/{question_id}/response/{response_id}', [
+			'as' => 'client.question.response.check',
+			'uses' => 'ClientQuestionsController@check_response'
+	]);
 } );
