@@ -5,7 +5,7 @@
 	</a>
 	@if($question->is_ia == 0)
 		<input type="hidden" name="is_ia" value="1"/>
-		<button type="submit" class="btn btn-success">
+		<button type="submit" class="btn btn-success" title="Ajouter cette question à la base de la recherche">
 			<span class="glyphicon glyphicon-plus"></span>
 			Indexer cette question
 		</button>

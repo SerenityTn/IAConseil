@@ -1,10 +1,10 @@
 @extends('layout')
 
 @section('container')
-	<div class="col-md-3">
+	<div class="col-md-3 row">
 		@yield('menu')
 	</div>
-    <div class="container col-md-9"> 
+    <div class="container col-md-9" style="padding-top: 20px"> 
     	<legend>
     		@yield('title')
     	</legend>

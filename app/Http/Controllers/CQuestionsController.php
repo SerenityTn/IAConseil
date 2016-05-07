@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class CQuestionsController extends Controller {
 	
 	public function index() {		
-		$questions = Question::clients_question()->paginate(5);
+		$questions = Question::clients_question()->latest()->paginate(5);
 		$view = request()->ajax() ? "advisor.client.questions.list" : "advisor.client.questions.index";
 		return view($view, compact('questions'));
 	}
 	
 	public function filter(Request $request){		
-		$questions = Question::filter_questions($request)->paginate(5);
+		$questions = Question::filter_questions($request)->latest()->paginate(5);
 		return view('advisor.client.questions.list', compact('questions'));		
 	}
 				

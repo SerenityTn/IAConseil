@@ -10,7 +10,7 @@ use App\Http\Controllers\QuestionsController;
 class ClientQuestionsController extends Controller {
 	
 	public function index() {
-		$questions = auth()->user()->client_questions()->paginate(5);
+		$questions = auth()->user()->client_questions()->latest()->paginate(5);
 		$view = request()->ajax() ? "client.questions.list" : "client.questions.index";
 		return view($view, compact('questions'));		
 	}
@@ -40,16 +40,9 @@ class ClientQuestionsController extends Controller {
 		return 'success';
 	}
 	
-	public function detach_response($question_id, $response_id){
-		$question = Question::find($question_id);		
-		$question->responses()->detach($response_id);
+	public function detach_response($question, $response){		
+		$question->responses()->detach($response->id);
 		return 'success';
-	}
-	
-	public function check_response($question_id, $response_id){
-		$question = Question::find($question_id);
-		if($question->responses->contains($response_id)) return "false";
-		return "true";		
 	}
 	
 	public function get_similar_questions($question){
@@ -62,8 +55,7 @@ class ClientQuestionsController extends Controller {
 		return $similar_questions;
 	}
 	
-	public function save_feedback($question_id){
-		$question = Question::find($question_id);
+	public function save_feedback($question){		
 		$note = request()->input('note');
 		$question->feedback = $note;
 		$question->save();

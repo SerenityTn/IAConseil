@@ -21,7 +21,7 @@
 		<div id="loading">
 		 	Loading
 		</div>
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-inverse nopadding">
 			<div class="container">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="/">IA Conseil</a>

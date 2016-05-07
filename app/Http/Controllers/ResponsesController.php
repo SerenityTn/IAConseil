@@ -27,7 +27,8 @@ class ResponsesController extends Controller{
     public function update(Request $request, $id){
     }
 
-    public function destroy($question, $response){    	
+    public function destroy($question, $response){
+    	return $question;
     	$question->responses()->detach($response->id);
     }
 }

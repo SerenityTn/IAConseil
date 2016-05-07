@@ -13,23 +13,25 @@ Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () 
 			'uses' => 'ClientQuestionsController@filter'
 	]);
 	
-	Route::post('questions/{question_id}/feedback', [
-		'as' => 'client.question.feedback',
+	//feedback
+	Route::post('questions/{questions}/feedback', [
+		'as' => 'client.questions.feedback',
 		'uses' => 'ClientQuestionsController@save_feedback'
 	]);
 	
-	Route::post( 'questions/{question_id}/response', [
-		'as' => 'client.question.response.assign',
+	//responses
+	Route::post( 'questions/{questions}/responses', [
+		'as' => 'client.questions.responses.assign',
 		'uses' => 'ClientQuestionsController@attach_response'
 	]);
 	
-	Route::delete( 'questions/{question_id}/response/{response_id}', [
-			'as' => 'client.question.response.detach',
+	Route::delete( 'questions/{questions}/responses/{responses}', [
+			'as' => 'client.questions.response.detach',
 			'uses' => 'ClientQuestionsController@detach_response'
 	]);
 	
-	Route::get( 'questions/{question_id}/response/{response_id}', [
-			'as' => 'client.question.response.check',
+	Route::get( 'questions/{questions}/response/{responses}', [
+			'as' => 'client.questions.responses.check',
 			'uses' => 'ClientQuestionsController@check_response'
 	]);
 	

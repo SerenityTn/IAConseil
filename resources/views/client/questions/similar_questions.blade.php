@@ -57,7 +57,7 @@
 		var _response_id = $(event.target).attr('response-id');
 		var _question_id = $(event.target).attr('question-id');
 		var _score = $(event.target).attr('score');
-		$.post(_question_id + '/response', {response_id: _response_id, score: _score}, function(data){
+		$.post(_question_id + '/responses', {response_id: _response_id, score: _score}, function(data){
 			$(btn).next().removeClass('hide');
 			disableBtn(btn);
 		}); 
@@ -68,9 +68,10 @@
 		var _response_id = $(event.target).prev().attr('response-id');
 		var _question_id = $(event.target).prev().attr('question-id');		
 		$.ajax({
-			url: _question_id + '/response/' + _response_id,
+			url: _question_id + '/responses/' + _response_id,
 			type: 'DELETE',
 			success: function(result){
+				console.log(result);
 				$(btn).addClass('hide');
 				enableBtn($(btn).prev());	
 			}			

@@ -80,6 +80,12 @@ sup {
 sup {
   top: -.5em;
 }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
 sub {
   bottom: -.25em;
 }
