@@ -9840,3 +9840,13 @@ if ( !noGlobal ) {
 
 return jQuery;
 }));
+
+
+function notif(msg){
+	$("#notif").prepend("" +
+			"<div id='success-alert' class='alert alert-success fade in'>" +
+			" <a href='#' class='close' data-dismiss='alert' aria-label='close' title='close'>&times;</a>" +
+			msg + " !</strong></div>"
+	);
+}
+

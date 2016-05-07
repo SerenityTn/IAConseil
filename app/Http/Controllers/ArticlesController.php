@@ -10,11 +10,11 @@ class ArticlesController extends Controller{
 	
 	public function index(){
 		$articles = Article::all();
-		return view('advisor.article.index', compact('articles'));
+		return view('advisor.articles.index', compact('articles'));
 	}
 	
 	public function show($id){
-		return view('advisor.article.index');
+		return view('advisor.articles.index');
 	}
 	
 	public function show_public($id){
@@ -25,37 +25,35 @@ class ArticlesController extends Controller{
 	
 	public function create(){
 		$themes = Theme::all();
-		return view('advisor.article.create', compact('themes'));
+		return view('advisor.articles.create', compact('themes'));
 	}
 	
 	public function store(){
-		$article = new Article();
-		$article->title = Input::get('title');
-		$article->content = Input::get('content');
-		
+		$article = new Article([
+			'title' => Input::get('title'),
+			'content' => Input::get('content')
+		]);					
 		$theme = Theme::find(Input::get('theme_id'));
 		$theme->articles()->save($article);
-		return redirect()->route('advisor.article.index');		
+		return back()->with('status', 'Article créé avec succès');		
 	}
 	
-	public function edit($id){
-		$article = Article::find($id);
+	public function edit($article){		
 		$themes = Theme::all();
-		return view('advisor.article.edit', compact('article'), compact('themes'));
+		return view('advisor.articles.edit', compact('article'), compact('themes'));
 	}
 	
-	public function update($id){
-		$article = Article::find($id);
+	public function update($article){		
 		$article->theme_id = Input::get('theme_id');
 		$article->title = Input::get('title');
 		$article->content = Input::get('content');
 		$article->save();
-		return redirect()->route('advisor.article.index');
+		return redirect()->route('advisor.articles.index');
 	}
 	
 	public function destroy($id){
 		$article = Article::find($id);
 		$article->delete();
-		return redirect()->route('advisor.article.index');
+		return redirect()->route('advisor.articles.index');
 	}
 }

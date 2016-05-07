@@ -1,4 +1,4 @@
-{!! Form::open(['route'=>'advisor.questions.ia.store']) !!}						
+{!! Form::open(['route'=>'advisor.ia.questions.store']) !!}						
 	<div class="form-group">
 		{!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Question', 'size' => 'x4']) !!}			
 	</div>					

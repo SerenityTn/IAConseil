@@ -2,49 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Question;
+use Illuminate\Http\Request;
 
 class CQuestionsController extends Controller {
 	
-	public function index() {
-		$query = Question::where ( 'is_ia', 0 );
-		$questions = $query->paginate(5);
-		return view ( 'advisor.questions.client.index', compact ( 'questions' ) );
+	public function index() {		
+		$questions = Question::clients_question()->paginate(5);
+		$view = request()->ajax() ? "advisor.client.questions.list" : "advisor.client.questions.index";
+		return view($view, compact('questions'));
+	}
+	
+	public function filter(Request $request){		
+		$questions = Question::filter_questions($request)->paginate(5);
+		return view('advisor.client.questions.list', compact('questions'));		
 	}
 				
-	public function show($id) {
-		$question = Question::find($id);
-		return view('advisor.questions.client.show', compact('question'));
+	public function show($question) {		
+		return view('advisor.client.questions.show', compact('question'));
 	}
 	
-	public function edit($id) {		
-		$question = Question::find($id);
-		return view('advisor.questions.client.edit', compact('question'));
+	public function edit($question) {		
+		return view('advisor.client.questions.edit', compact('question'));
 	}
-	
-	public function add_index_question($id){		
-		$question = Question::find($id);
-		$question->is_ia = 1;
-		$question->save();		
-		return back()->with('status', "Cette question est ajouté à l'index");
-	}
-	
-	public function remove_index_question($id, $b){
-		$question = Question::find($id);
-		$question->is_ia = 0;
+			
+	public function update_index($question){
+		$msg = "";		
+		$question->is_ia = request()->input('is_ia');		
 		$question->save();
-		return back()->with('status', "Cette question est supprimé de l'index");
+		$msg = $question->is_ia ? "Cette question est ajouté à l'index" : "Cette question est supprimé de l'index";
+		return back()->with('status', $msg);
 	}
-	
-	public function store($id) {
-		
-	}
-		
-	public function destroy($id) {
-		$question = Question::findOrfail($id);
-		$question->delete();
-		return back()->with('status','Question supprimé');
+
+	public function destroy($question) {		
+		$question->delete();		
 	}
 }

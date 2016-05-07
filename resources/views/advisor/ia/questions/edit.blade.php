@@ -1,4 +1,4 @@
-{{ Form::open(['route' => ['advisor.questions.ia.update', $ia_question->id]]) }}
+{{ Form::open(['route' => ['advisor.ia.questions.update', $ia_question->id]]) }}
 	{{ Form::hidden('_method', 'PUT') }}
 	<div class="form-group">
 		{!! Form::label('content', 'Question') !!}

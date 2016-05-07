@@ -13,7 +13,7 @@
 		</a>
 	</li>								
 	<li>
-		<a href="{{ route('client.stats') }}">
+		<a href="#">
 			<span class="glyphicon glyphicon-stats"></span> 
 			Statistiques
 		</a>

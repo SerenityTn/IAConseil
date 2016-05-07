@@ -1,16 +1,16 @@
 function create_ia_question(){
 	$(".modal-title").text('Créer une question')
-	$(".modal-body").load('ia/create');	
+	$(".modal-body").load('questions/create');	
 }
 
 function show_ia_question(id){	
 	$(".modal-title").text('Question IA')
-	$(".modal-body").load('ia/' + id);
+	$(".modal-body").load('questions/' + id);
 }
 
 function edit_ia_question(id){
 	$(".modal-title").text('Modifier Question IA')
-	$(".modal-body").load('ia/' + id + '/edit');
+	$(".modal-body").load('questions/' + id + '/edit');
 }
 
 function add_ia_response(){
@@ -24,7 +24,7 @@ function edit_ia_response(id){
 
 function delete_ia_question(id, btn){	
 	$.ajax({
-	    url: 'ia/' + id,
+	    url: 'question/' + id,
 	    type: 'DELETE',
 	    success: function(result) {
 	    	$(btn).parent().parent().remove();

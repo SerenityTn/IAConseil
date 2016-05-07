@@ -8,9 +8,9 @@ Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () 
 	
 	Route::resource('questions', 'ClientQuestionsController');
 	
-	Route::get('questions/filter/{state}', [
-			'as' => 'client.question.filter.state',
-			'uses' => 'ClientQuestionsController@filter_list'
+	Route::post('questions/filter', [
+			'as' => 'client.questions.filter',
+			'uses' => 'ClientQuestionsController@filter'
 	]);
 	
 	Route::post('questions/{question_id}/feedback', [

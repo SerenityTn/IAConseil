@@ -5,42 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Question;
+use App\Response;
 
 class ResponsesController extends Controller{
-    public function create(){
-    	
+    public function create($question){    	    	
+    	return view('advisor.client.questions.responses.create', compact('question'));    	    
     }
 
-
-    public function store(Request $request){
-    
+    public function store(Request $request, $question){    	    	
+		$response = new Response([
+			'text' => $request->input('text')
+		]);
+		$question->responses()->save($response);
+		return back()->with('status', 'Réponse affecté !');
     }
 
-    
-    public function edit($id){
-        //
+    public function edit($response){
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy($question, $response){    	
+    	$question->responses()->detach($response->id);
     }
 }
+	

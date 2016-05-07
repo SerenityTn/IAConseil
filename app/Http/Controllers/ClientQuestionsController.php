@@ -7,21 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\QuestionsController;
 
-class ClientQuestionsController extends QuestionsController {
+class ClientQuestionsController extends Controller {
 	
-	public function index() {					
-		$questions = auth()->user()->questions()->paginate(5);
-		return view('client.questions.index', compact('questions'));		
+	public function index() {
+		$questions = auth()->user()->client_questions()->paginate(5);
+		$view = request()->ajax() ? "client.questions.list" : "client.questions.index";
+		return view($view, compact('questions'));		
 	}
 	
-	public function filter_list($state){		
-		if($state == 1) $questions = auth()->user()->questions()->where('state', '=', '0')->paginate(5);
-		else $questions = auth()->user()->questions()->paginate(5);
-		return view('client.questions.list', compact('questions'));
+	public function filter(Request $request){	
+		$questions = auth()->user()->filter_questions($request)->paginate(5);
+		return view('client.questions.list', compact('questions'));		
 	}
 	
-	public function show($id) {
-		$question = Question::find($id);
+	public function show($question) {		
 		return view('client.questions.show', compact('question'));
 	}
 	
@@ -35,8 +34,7 @@ class ClientQuestionsController extends QuestionsController {
 		return view('client.questions.similar_questions', compact('sqs'), compact('question'));
 	}
 	
-	public function attach_response($question_id){
-		$question = Question::find($question_id);
+	public function attach_response($question){		
 		$response = Question::find(request()->input('response_id'));		
 		$question->responses()->attach($response, ['score' => request()->input('score')]);
 		return 'success';
@@ -80,5 +78,10 @@ class ClientQuestionsController extends QuestionsController {
 		]);
 		auth()->user()->questions()->save($question);
 		return $question;
-	}								
+	}
+	
+	public function destroy($question){				
+		$question->deleted = true;
+		$question->save();
+	}
 }
