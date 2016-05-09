@@ -17,6 +17,10 @@ class User extends Authenticatable{
     	return $this->hasMany('App\Question')->latest();
     }         
     
+    public function question(){
+    	return $this->client_questions()->first();
+    }
+    
     public function client_questions(){
     	return auth()->user()->questions()->where('deleted', '=', '0');
     }

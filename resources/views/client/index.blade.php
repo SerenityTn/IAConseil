@@ -4,11 +4,15 @@
 @stop
 @section('body')
 	<h4>Votre dernière question</h4>
-	<div class="well">
-		{{ auth()->user()->questions()->first()->content }}
-	</div>
+	@if(auth()->user()->question())
+		<div class="well">		
+			{{ auth()->user()->question()->content }}
+		</div>
+	@endif
 	<h4>Réponse(s)</h4>
-	<div class="well">
-		{{ auth()->user()->questions()->first()->responses()->first()->text }}
-	</div>
+	@if(auth()->user()->question() && auth()->user()->question()->responses()->first())
+		<div class="well">	
+			{{ auth()->user()->question()->responses()->first()->text }}
+		</div>
+	@endif
 @stop
