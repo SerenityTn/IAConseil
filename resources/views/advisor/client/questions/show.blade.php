@@ -45,8 +45,7 @@
 		$.ajax({
 		    url: question_id + '/responses/' + id,
 		    type: 'DELETE',
-		    success: function(result) {
-			    console.log(result);
+		    success: function(result) {			    
 		    	$(btn).parent().parent().remove();
 		    	$("#notif").prepend("" +
 		    			"<div id='success-alert' class='alert alert-success fade in'>" +

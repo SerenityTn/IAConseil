@@ -13,7 +13,11 @@
 		<tbody>
 			@foreach($questions as $question)
 			<tr>				
-				<td>{{ $question->content }}</td>							
+				<td>
+					@if($question->notif == 1)
+						<span class="label label-success">nouvelle réponse</span>						
+					@endif
+					{{ $question->content }}</td>							
 				<td>
 					@if(!is_null($question->response()))
 						{{ $question->response()->text }}

@@ -16,7 +16,8 @@ class ComposerServiceProvider extends ServiceProvider
     		$role_map= [
     				"1" => "<strong>Administrateur</strong>",
     				"2" => "<i>Expert</i>",
-    				"3" => "Client"
+    				"3" => "Client",
+    				"4" => "<b><u>Client Prime</u></b>"
     		];    		
     		$view->with('role_map', $role_map);    		
     	});

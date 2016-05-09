@@ -4,6 +4,7 @@
 @stop
 <?php $question_id = -1 ?>
 @section('buttons')
+	<div>Poser vote question et nous essayerons de trouver les questions similaires à votre question</div>
 	<div id="avis" class="hide">
 		Vous êtes satisfait ? : @include('client.questions.feedback')
 	</div>

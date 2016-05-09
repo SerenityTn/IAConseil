@@ -8,14 +8,26 @@
 	</li>
 	<li {{{ (Request::is('question.create') ? 'class=active' : '') }}}>
 		<a href="{{ route('client.questions.index') }}">
-			<span class="glyphicon glyphicon-th-list"></span> 
+			<span class="glyphicon glyphicon-th-list"></span> 			
 			Mes questions
+			
+			@if (auth()->user()->check_notif())
+				 <span class="label label-danger"><b>{{ auth()->user()->check_notif() }}</b> réponse(s) </span></h1>
+			@endif
 		</a>
 	</li>								
 	<li>
-		<a href="#">
+		<a href="{{ route('client.stats') }}">
 			<span class="glyphicon glyphicon-stats"></span> 
 			Statistiques
 		</a>
 	</li>
+	@if(auth()->user()->role == 4)
+		<li>
+			<a href="{{ route('client.dialog') }}">
+				<span class="glyphicon glyphicon-console"></span> 
+				Système de dialogue
+			</a>
+		</li>
+	@endif
 @stop

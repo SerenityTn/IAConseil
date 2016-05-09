@@ -21,6 +21,8 @@ class ClientQuestionsController extends Controller {
 	}
 	
 	public function show($question) {		
+		$question->notif = 0;
+		$question->save();
 		return view('client.questions.show', compact('question'));
 	}
 	

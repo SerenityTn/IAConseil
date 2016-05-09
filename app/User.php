@@ -21,6 +21,10 @@ class User extends Authenticatable{
     	return auth()->user()->questions()->where('deleted', '=', '0');
     }
     
+    public function check_notif(){
+    	return $this->client_questions()->where('notif', '1')->count();
+    }
+    
     public function filter_questions(){
     	$query = $this->client_questions();    
     	if(request()->has('state')){    		

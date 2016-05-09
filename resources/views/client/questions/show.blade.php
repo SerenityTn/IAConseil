@@ -6,9 +6,13 @@
 <div class="well">
 	{{ $question->content }}
 </div>
-<h4>Réponse(s)</h4>
-@foreach($question->responses as $response)
-	<div class="well">		
-		{{ $response->text }}
-	</div>
-@endforeach
+@if(!$question->response())
+	<p class="error">aucune réponses n'est disponible</p>
+@else
+	<h4>Réponse(s)</h4>
+	@foreach($question->responses as $response)
+		<div class="well">				
+			{{ $response->text }}
+		</div>
+	@endforeach
+@endif

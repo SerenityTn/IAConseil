@@ -14,7 +14,7 @@ class ClientAuth{
      */
     public function handle($request, Closure $next){
     	$user = $request->user();
-    	if($user && $user->role == \Config::get('constants.roles.client')){
+    	if($user && ($user->role == 3 || $user->role == 4)){
     		return $next($request);
     	}        
     	abort(404, 'Only clients accepted');

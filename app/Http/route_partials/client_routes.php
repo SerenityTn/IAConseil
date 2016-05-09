@@ -36,7 +36,13 @@ Route::group ( ['middleware'=> 'clientAuth', 'prefix' => 'client'], function () 
 	]);
 	
 	Route::get ( 'stats', ['as' => 'client.stats', function(){
-		return view('client.statistiques');
+			return view('client.stats.index');
+		}
+	]);
+	
+	
+	Route::get ( 'dialog', ['as' => 'client.dialog', function(){
+			return view('client.dialog.index');
 		}
 	]);
 	

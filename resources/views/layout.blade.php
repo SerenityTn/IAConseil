@@ -12,7 +12,8 @@
 		<title>@yield('title')</title> 
 		@yield('style')
 		<link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
-		<link href="{{ URL::asset('css/bootstrap.css') }}" rel="stylesheet">		
+		<link href="{{ URL::asset('css/bootstrap.css') }}" rel="stylesheet">
+		<link href="{{ URL::asset('css/chat.css') }}" rel="stylesheet">		
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
 		<script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
 	</head>

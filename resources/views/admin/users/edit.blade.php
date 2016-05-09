@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="col-sm-6 form-group">
 				{!! Form::label('role', 'Role') !!}
-				{!! Form::select('role', ["1"=>"Administrateur", "2" => "Expert", "3" => "Client"], null, ['class' => 'form-control']) !!}
+				{!! Form::select('role', ["1"=>"Administrateur", "2" => "Expert", "3" => "Client", "4" => "Client Prime"], null, ['class' => 'form-control']) !!}
 			</div>
 		</div>
 		<div class="row">

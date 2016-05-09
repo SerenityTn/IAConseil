@@ -34,7 +34,7 @@ class Question extends Model{
 		return Question::whereHas( 'User', function($query){
 			$query->where('role', '>', '2');
 		});
-	}
+	}	
 	
 	public static function filter_questions($request){
 		$query = self::clients_question();		

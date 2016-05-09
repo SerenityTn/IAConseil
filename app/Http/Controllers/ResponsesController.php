@@ -18,6 +18,8 @@ class ResponsesController extends Controller{
 			'text' => $request->input('text')
 		]);
 		$question->responses()->save($response);
+		$question->notif = 1;
+		$question->save();
 		return back()->with('status', 'Réponse affecté !');
     }
 
@@ -27,8 +29,7 @@ class ResponsesController extends Controller{
     public function update(Request $request, $id){
     }
 
-    public function destroy($question, $response){
-    	return $question;
+    public function destroy($question, $response){    	
     	$question->responses()->detach($response->id);
     }
 }
