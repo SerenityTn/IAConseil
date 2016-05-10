@@ -10,7 +10,7 @@
 			labels: ['Question 1', 'Question 2', "Question 3"],
 			datasets :[
 				{
-					label: "Réponses le plus utilisé",
+					label: "Réponses les plus utilisées",
 					data :[35, 32, 25],
 					backgroundColor:[
 		              "#FF6384",

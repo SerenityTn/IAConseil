@@ -1,12 +1,16 @@
-<canvas id="client_users_graph" width ="2" height="1"></canvas>
-<canvas id="client_number_graph" width="2" height="1"></canvas>
+<div class="col-md-6">
+	<canvas id="client_users_graph" width ="1" height="1"></canvas>
+</div>
+<div class="col-md-6">
+	<canvas id="client_number_graph" width="1" height="1"></canvas>
+</div>
 <script>
 $.get('stats/clients/data', function(questions_data){	
 	var data = {
-			labels: ['Mohamed Becha', 'Hafedh Hammouda', "Tawfik Amamou"],
+			labels: ["Tawfik Amamou", 'Karim Taweb', 'Hafedh Hammouda'],
 			datasets :[
 				{
-					label: "Réponses le plus utilisé",
+					label: "Clients avec le plus de questions",
 					data :[35, 32, 25],
 					backgroundColor:[
 		              "#FF6384",
