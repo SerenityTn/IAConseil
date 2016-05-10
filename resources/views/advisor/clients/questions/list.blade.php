@@ -37,7 +37,7 @@
 					@endif
 				</td>
 				<td>
-					<a class="btn btn-info" href="{{ route('advisor.client.questions.show', [$question->id])}}">
+					<a class="btn btn-info" href="{{ route('advisor.clients.questions.show', [$question->id])}}">
 						<span class="glyphicon glyphicon-eye-open"></span>
 					</a>
 				</td>						

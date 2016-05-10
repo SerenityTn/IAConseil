@@ -20,7 +20,7 @@
 					<div class="well">@if(!is_null($response)) {{ $response->text }} @endif</div>			
 				</div>
 				<div class="button-group">
-					<button class="btn btn-primary" href="#">
+					<button class="btn btn-primary" onclick="edit_response({{ $response->id }})" data-toggle="modal" data-target="#modal">
 						<span class="glyphicon glyphicon-pencil"></span>					
 					</button>
 					<button class="btn btn-danger" onclick="delete_response(this, {{ $response->id }})">			
@@ -36,8 +36,14 @@
 <script type="text/javascript">
 	function create_response(){
 		var question_id = $(".question").attr('id');
-		$(".modal-title").text('Réponse à cette question')
+		$(".modal-title").text('Répondre à cette question')
 		$(".modal-body").load(question_id +'/responses/create');	
+	}
+
+	function edit_response(response_id){
+		var question_id = $(".question").attr('id');
+		$(".modal-title").text('Modifier cette réponse')
+		$(".modal-body").load(question_id +'/responses/'+ response_id +'/edit');
 	}
 
 	function delete_response(btn, id){

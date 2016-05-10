@@ -16,12 +16,6 @@
 			@endif
 		</a>
 	</li>								
-	<li>
-		<a href="{{ route('client.stats') }}">
-			<span class="glyphicon glyphicon-stats"></span> 
-			Statistiques
-		</a>
-	</li>
 	@if(auth()->user()->role == 4)
 		<li>
 			<a href="{{ route('client.dialog') }}">

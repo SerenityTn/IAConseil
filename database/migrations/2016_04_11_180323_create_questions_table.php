@@ -14,8 +14,7 @@ class CreateQuestionsTable extends Migration{
             $table->increments('id')->unsigned();
             $table->integer("user_id")->unsigned()->index();           
             $table->text('content');
-            $table->string('key_content');
-            $table->boolean('state');
+            $table->string('key_content');            
             $table->boolean("is_ia")->default(false);
             $table->integer('feedback');
             $table->boolean('notif');

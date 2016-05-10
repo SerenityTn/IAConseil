@@ -3,8 +3,8 @@
 	Liste des questions clients
 @stop
 @section('buttons')
-	@include('advisor.client.questions.filters')
+	@include('advisor.clients.questions.filters')
 @stop
 @section('body')	
-	@include('advisor.client.questions.list')
+	@include('advisor.clients.questions.list')
 @stop

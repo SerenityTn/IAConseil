@@ -1,4 +1,4 @@
-{!! Form::open(['route' => ['advisor.client.questions.update_index', $question->id], 'class' => 'form-inline']) !!}
+{!! Form::open(['route' => ['advisor.clients.questions.update_index', $question->id], 'class' => 'form-inline']) !!}
 	<a onclick="create_response()" class="btn btn-info" data-toggle="modal" data-target="#modal">
 		<span class="glyphicon glyphicon-pencil"></span>
 		Répondre à cette question

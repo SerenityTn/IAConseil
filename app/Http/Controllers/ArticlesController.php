@@ -17,8 +17,7 @@ class ArticlesController extends Controller{
 		return view('advisor.articles.index');
 	}
 	
-	public function show_public($id){
-		$article = Article::find($id);
+	public function show_public($article){		
 		$articles = Article::all();
 		return view('public.news.show_article', compact('article'), compact('articles'));
 	}
@@ -51,8 +50,7 @@ class ArticlesController extends Controller{
 		return redirect()->route('advisor.articles.index');
 	}
 	
-	public function destroy($id){
-		$article = Article::find($id);
+	public function destroy($article){		
 		$article->delete();
 		return redirect()->route('advisor.articles.index');
 	}

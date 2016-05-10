@@ -10,7 +10,7 @@ use App\Response;
 
 class ResponsesController extends Controller{
     public function create($question){    	    	
-    	return view('advisor.client.questions.responses.create', compact('question'));    	    
+    	return view('advisor.clients.questions.responses.create', compact('question'));    	    
     }
 
     public function store(Request $request, $question){    	    	
@@ -23,10 +23,8 @@ class ResponsesController extends Controller{
 		return back()->with('status', 'Réponse affecté !');
     }
 
-    public function edit($response){
-    }
-
-    public function update(Request $request, $id){
+    public function edit($question, $response){       				 
+    	return view('advisor.clients.questions.responses.edit',compact('question'), compact('response'));
     }
 
     public function destroy($question, $response){    	

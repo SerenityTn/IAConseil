@@ -25,5 +25,5 @@
 		</div>                    
     </div>
     @include('modal')
-	@include('common.modals.deleteModal', ['message' => 'Voulez vous vraiement supprimer cet utilisateur ?'])
+	@include('partials.deleteModal', ['message' => 'Voulez vous vraiement supprimer cet utilisateur ?'])
 @stop

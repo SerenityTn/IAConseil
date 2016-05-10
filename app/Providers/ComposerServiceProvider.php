@@ -22,8 +22,8 @@ class ComposerServiceProvider extends ServiceProvider
     		$view->with('role_map', $role_map);    		
     	});
     	
-    	view()->composer('advisor.client.questions.filters', function($view){
-    		$clients = [0 => 'Tous les clients'] + \App\User::where('role','3')->lists('nom','id')->toArray();     		
+    	view()->composer('advisor.clients.questions.filters', function($view){
+    		$clients = [0 => 'Tous les clients'] + \App\User::where('role','>=', '3')->lists('nom','id')->toArray();     		
     		$view->with('clients', $clients);
     	});
     	

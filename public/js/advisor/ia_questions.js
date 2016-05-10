@@ -24,7 +24,7 @@ function edit_ia_response(id){
 
 function delete_ia_question(id, btn){	
 	$.ajax({
-	    url: 'question/' + id,
+	    url: 'questions/' + id,
 	    type: 'DELETE',
 	    success: function(result) {
 	    	$(btn).parent().parent().remove();

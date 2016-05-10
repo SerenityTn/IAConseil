@@ -49,4 +49,8 @@ class IAQuestionsController extends QuestionsController{
         $response->save();
         return back()->with('status', 'Question IA modifié');
     }
+    
+    public function destroy($question){
+    	$question->delete();
+    }
 }

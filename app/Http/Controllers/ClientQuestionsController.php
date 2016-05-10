@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\Http\Controllers\QuestionsController;
 
-class ClientQuestionsController extends Controller {
-	
+class ClientQuestionsController extends Controller {	
 	public function index() {
 		$questions = auth()->user()->client_questions()->latest()->paginate(5);
 		$view = request()->ajax() ? "client.questions.list" : "client.questions.index";

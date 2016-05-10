@@ -15,11 +15,4 @@
 			</div>
 		</div>
 	</li>
-	
-	<li>
-		<a href="#">
-			<span class="glyphicon glyphicon-stats"></span>
-			Statistiques
-		</a>
-	</li>
 @stop
