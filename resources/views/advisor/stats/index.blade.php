@@ -25,8 +25,7 @@
 		$("#main").load('stats/clients');
 	}
 
-	$.get('stats/data', function(questions_data){
-		console.log(questions_data);
+	$.get('stats/data', function(questions_data){		
 		var general_data = questions_data.slice(0, 3);		
 		var avg_data = questions_data.slice(3, 5);
 		

@@ -2,7 +2,9 @@
 Route::group(['middleware'=> 'adminAuth', 'prefix' => 'admin'], function(){
 	
 	Route::get('/',['as'=>'admin.index',function(){
-		return view('admin.index');
+		$message = App\Message::latest()->first();
+		$user = App\User::latest()->first();
+		return view('admin.index', compact('message', 'user'));
 	}]);
 	
 	Route::resource('users', 'UsersController');
