@@ -18,15 +18,19 @@
 <div class="row">
 	<div class="col-md-6">
 		<legend>Dernier utilisateur inscrit</legend>
+		@if($user)
 		Nom : {{ $user->nom }}<br/>
 		Prénom : {{ $user->prenom }}<br/>
 		Email :	{{ $user->email }}<br/>
+		@endif
 	</div>
 	<div class="col-md-6">
 		<legend>Dernier message reçu</legend>
+		@if($message)
 		<div class="well">
 			{{ $message->contenu }}
 		</div>
+		@endif
 	</div>
 </div>
 <script type="text/javascript" src="{{ URL::asset('js/chart.js') }}"></script>
