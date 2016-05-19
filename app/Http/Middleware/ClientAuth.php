@@ -16,7 +16,7 @@ class ClientAuth{
     	$user = $request->user();
     	if($user && ($user->role == 3 || $user->role == 4)){
     		return $next($request);
-    	}        
-    	abort(404, 'Only clients accepted');
+    	}
+    	return redirect("/");
     }
 }

@@ -17,7 +17,7 @@ class AdvisorAuth
     	$user = $request->user();
     	if($user && $user->role == \Config::get('constants.roles.advisor')){
     		return $next($request);
-    	}        
-    	abort(404, 'No way');
+    	}
+    	return redirect("/");
     }
 }
