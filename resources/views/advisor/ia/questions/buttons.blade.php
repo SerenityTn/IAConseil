@@ -1,4 +1,8 @@
 {!! Form::open(['route' => ['advisor.clients.questions.update_index', $question->id], 'class' => 'form-inline']) !!}
+	<a href="{{ route('advisor.clients.questions.index') }}" class="btn btn-warning">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+		&nbsp;
+	</a>
 	<a onclick="create_response()" class="btn btn-info" data-toggle="modal" data-target="#modal">
 		<span class="glyphicon glyphicon-pencil"></span>
 		Répondre à cette question
@@ -16,4 +20,4 @@
 			Supprimé de l'index
 		</button>
 	@endif
-{!! Form::close() !!}	
+{!! Form::close() !!}

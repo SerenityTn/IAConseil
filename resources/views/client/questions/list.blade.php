@@ -1,52 +1,69 @@
 <div class="tadble-responsive">
 	@if(session('status'))
-		<div class="alert alert-success">		
+		<div class="alert alert-success">
 			{{ session('status') }}
 		</div>
 	@endif
 	<table id="mytable" class="table table-bordred table-striped">
-		<thead>			
+		<thead>
 			<th>Question</th>
 			<th>Réponse</th>
-			<th colspan="2"></th>			
-		</thead> 		
+		</thead>
 		<tbody>
 			@foreach($questions as $question)
-			<tr>				
+			<tr>
 				<td>
 					@if($question->notif == 1)
-						<span class="label label-success">nouvelle réponse</span>						
+						<span class="label label-success">nouvelle réponse</span>
 					@endif
-					{{ $question->content }}</td>							
+						<div class="content">
+							{{ $question->content }}
+						</div>
+				</td>
 				<td>
 					@if(!is_null($question->response()))
-						{{ $question->response()->text }}
+						<div class="content">
+							{{ $question->response()->text }}
+						</div>
 					@endif
 				</td>
-				<td>					
+				<td>
 					<button onclick="show_question({{ $question->id }})" data-toggle = "modal" data-target="#modal" class="btn btn-info">
 						<span class="glyphicon glyphicon-eye-open"></span>
-					</button>									
+					</button>
                 </td>
-				<td>				
+				<td>
 					<button onclick="delete_cquestion({{ $question->id }}, this)" data-toggle="modal" data-target="#delaeteModal" class="btn btn-danger">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button>
 				</td>
 			</tr>
-			@endforeach			
+			@endforeach
 		</tbody>
 	</table>
 	<div class="clearfix"></div>
 	<div class="col-md-10 col-md-offset-2">
 		{!! $questions->links() !!}
-	</div>	
+	</div>
 </div>
 
 <script type="text/javascript">
-	function show_question(id){	
+	$('#more').click(function(e) {
+	    e.stopPropagation();
+	    $('div').css({
+	        'height': 'auto'
+	    })
+	});
+
+	$(document).click(function() {
+	    $('div').css({
+	        'height': '40px'
+	    })
+	})
+
+	function show_question(id){
 		$(".modal-title").text('Détails question')
-		$(".modal-body").load('questions/' + id);	
+		$(".modal-body").load('questions/' + id);
 	}
 
 	function delete_cquestion(id, btn){

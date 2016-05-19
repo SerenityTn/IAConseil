@@ -9,11 +9,11 @@ use App\Question;
 use App\Response;
 
 class ResponsesController extends Controller{
-    public function create($question){    	    	
-    	return view('advisor.clients.questions.responses.create', compact('question'));    	    
+    public function create($question){
+    	return view('advisor.clients.questions.responses.create', compact('question'));
     }
 
-    public function store(Request $request, $question){    	    	
+    public function store(Request $request, $question){
 		$response = new Response([
 			'text' => $request->input('text')
 		]);
@@ -23,12 +23,20 @@ class ResponsesController extends Controller{
 		return back()->with('status', 'Réponse affecté !');
     }
 
-    public function edit($question, $response){       				 
+    public function edit($question, $response){
     	return view('advisor.clients.questions.responses.edit',compact('question'), compact('response'));
     }
 
-    public function destroy($question, $response){    	
+    public function update($question, $response){
+        $new_response = new Response([
+  			   'text' => request()->input('text')
+  		  ]);
+        $question->responses()->detach($response->id);
+        $question->responses()->save($new_response);
+        return back()->with('status', 'Réponse modifié avec succè !');
+    }
+
+    public function destroy($question, $response){
     	$question->responses()->detach($response->id);
     }
 }
-	

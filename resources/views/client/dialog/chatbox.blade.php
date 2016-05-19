@@ -1,102 +1,38 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="panel-chat panel-primary">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-comment"></span> Chat                    
-                </div>
-                <div class="panel-body-chat">
-                    <ul class="chat">
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Serenity</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    Bonjour! Comment pourrai-je vous aider ?
-                                </p>
-                            </div>
-                        </li>                       
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-                                    <strong class="pull-right primary-font">Client</strong>
-                                </div>
-                                <p>                                   
-                                   	J'aimerais bien créer une société.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Serenity</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    Est ce que vous êtes de nationalité tunisienne ?
-                                </p>
-                            </div>
-                        </li>                       
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-                                    <strong class="pull-right primary-font">Client</strong>
-                                </div>
-                                <p>                                   
-                                   Oui.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Serenity</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    Quel âge avez vous s'il vous plait ?
-                                </p>
-                            </div>
-                        </li>                       
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-                                    <strong class="pull-right primary-font">Client</strong>
-                                </div>
-                                <p>                                   
-                                   	23 ans.
-                                </p>
-                            </div>
-                        </li>                                                
-                    </ul>
-                </div>
-                <div class="panel-footer">
-                    <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                        <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
-                                Envoyer</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container"><div id='bot-div' style='background-color:#fff'>
+  <div id='avatar-image-div' style='display:none;'>
+    <img id='avatar' style='height:300px;'/>
+  </div>
+  <div id='avatar-video-div' style='display:none;background-repeat: no-repeat;'>
+    <video id='avatar-video' autoplay preload='auto' style='background:transparent;height:300px;'>
+      Video format not supported by your browser (try Chrome)
+    </video>
+  </div>
+  <div id='avatar-canvas-div' style='display:none'>
+    <canvas id='avatar-canvas' style='background:transparent;height:300px;'>
+      Canvas not supported by your browser (try Chrome)
+    </canvas>
+  </div>
+  <div>
+    <div style='max-height:100px;overflow:auto;margin:8px;'>
+      <span id='response'></span><br/>
     </div>
+    <span style='display:block;overflow:hidden;margin:2px;padding-right:4px'><input id='chat' type='text' style='width:100%'/></span>
+  </div>
+</div>
+<script type='text/javascript' src='http://www.botlibre.com/scripts/sdk.js'></script>
+<script type='text/javascript'>
+SDK.applicationId = "1485730099812757779";
+var sdk = new SDKConnection();
+var web = new WebChatbotListener();
+web.connection = sdk;
+web.instance = '12730015';
+web.instanceName = 'SerenityTn';
+document.getElementById('chat').addEventListener('keypress', function(event) {
+  if (event.keyCode == 13) {
+    web.sendMessage();
+    return false;
+  }
+});
+</script>
+
 </div>

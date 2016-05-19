@@ -8,38 +8,47 @@
 		Nouvelle question
 	</button>
 @stop
-@section('body')	
+@section('body')
 	<div class="table-responsive">
 		<table id="mytable" class="table table-bordred table-striped">
-			<thead>			
+			<thead>
 				<th>Question</th>
-				<th>Réponse</th>		
-			</thead> 		
+				<th>Réponse</th>
+			</thead>
 			<tbody>
 				@foreach($ia_questions as $iaq)
-				<tr>				
-					<td>{{ $iaq->content }}</td>
-					<td>{{ $iaq->responses->isEmpty() ? "Aucune réponse n'est affecté" : $iaq->responses()->first()->text }}</td>
-					<td>					
+				<tr>
+					<td class="question">
+						<div class="content">
+							{{ $iaq->content }}
+						</div>
+					</td>
+					<td class="response">
+						<div class="content">
+							{{ $iaq->responses->isEmpty() ? "Aucune réponse n'est affecté" : $iaq->responses()->first()->text }}
+						</div>
+						...
+					</td>
+					<td>
 						<button onclick="show_ia_question({{ $iaq->id }})" data-toggle="modal" data-target="#modal" class="btn btn-info">
 							<span class="glyphicon glyphicon-eye-open"></span>
-						</button>									
-	                </td>
-	                <td>								
+						</button>
+	        </td>
+	    		<td>
 						<button onclick="edit_ia_question({{ $iaq->id }})" data-toggle="modal" data-target="#modal" class="btn btn-primary">
-							<span class="glyphicon glyphicon-pencil"></span>		
-						</button>     					
-					</td>													
-					<td>				
+							<span class="glyphicon glyphicon-pencil"></span>
+						</button>
+					</td>
+					<td>
 						<button onclick="delete_ia_question({{ $iaq->id }}, this)" data-toggle="modal" data-target="#delaeteModal" class="btn btn-danger">
 							<span class="glyphicon glyphicon-trash"></span>
-						</button>					
+						</button>
 					</td>
 				</tr>
 				@endforeach
 			</tbody>
 		</table>
-		
-		{!! $ia_questions->links() !!}	
-	</div>	
+
+		{!! $ia_questions->links() !!}
+	</div>
 @stop
