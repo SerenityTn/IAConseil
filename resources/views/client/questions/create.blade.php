@@ -9,27 +9,27 @@
 		Vous êtes satisfait ? : @include('client.questions.feedback')
 	</div>
 @stop
-@section('body')		
-	<div class="form-group">		
+@section('body')
+	<div class="form-group">
 		<textarea class="form-control" required="required" placeholder="Question ?" id="content" rows="5"></textarea>
 	</div>
 	<div class="form-group">
 		<button onclick = "ask()" class="btn btn-success">Envoyer</button>
-	</div>	
-	<div id="similar_questions">		
-	</div>	
+	</div>
+	<div id="similar_questions">
+	</div>
 @stop
 
 <script type="text/javascript">
 	function ask(){
 		clear_stars();
 		$('#avis').removeClass('hide');
-		var content = $('#content').val();	
+		var content = $('#content').val();
 		$.ajax({
 			type: 'POST',
-		    url: '/client/questions',	    	
+		    url: '/client/questions',
 		    data: "content="+content,
-		    success: function(result) {	    	
+		    success: function(result) {
 		    	$("#similar_questions").html(result);
 		    }
 		});

@@ -1,12 +1,12 @@
 <div class="table-responsive">
 	<table id="mytable" class="table table-bordred table-striped">
 		<thead>
-			<th>Client</th>				
+			<th>Client</th>
 			<th>Question</th>
 			<th>Réponse</th>
 			<th>Pertinence</th>
-			<th>Avis</th>				
-		</thead> 		
+			<th>Avis</th>
+		</thead>
 		<tbody>
 			@foreach($questions as $question)
 			<tr>
@@ -17,15 +17,19 @@
 					@if($question->deleted == 1)
 						<span class="glyphicon glyphicon-trash" title="cette question a été supprimé par l'utilisateur"></span>
 					@endif
-					{{ $question->content }}
+					<div class="content">
+						{{ $question->content }}
+					</div>
 				</td>
 				<td>
 					@if(!is_null($question->response()))
-						{{ $question->response()->text }}
+						<div class="content">
+							{{ $question->response()->text }}
+						</div>
 					@endif
 				</td>
 				<td>
-					@if(!is_null($question->response()))								
+					@if(!is_null($question->response()))
 						 {{ $question->response()->pivot->score }}
 					@endif
 				</td>
@@ -40,17 +44,17 @@
 					<a class="btn btn-info" href="{{ route('advisor.clients.questions.show', [$question->id])}}">
 						<span class="glyphicon glyphicon-eye-open"></span>
 					</a>
-				</td>						
-				<td>
-					
 				</td>
-				<td>							
+				<td>
+
+				</td>
+				<td>
                     <button onclick="delete_question(this, {{ $question->id }})" class="btn btn-danger">
                     	<span class="glyphicon glyphicon-trash"></span>
-                    </button>                    			                
+                    </button>
 				</td>
 			</tr>
-			@endforeach			
+			@endforeach
 		</tbody>
 	</table>
 	<div class="clearfix"></div>

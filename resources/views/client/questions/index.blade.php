@@ -5,6 +5,6 @@
 @section('buttons')
 	@include('client.questions.filters')
 @stop
-@section('body')
+@section('body')	
 	@include('client.questions.list')
 @stop

@@ -9,10 +9,10 @@
 @section('body')
 <div class="row">
 	<div class="col-md-6">
-		<canvas id="index_users_graph"  width="1" height="1"></canvas>		
+		<canvas id="index_users_graph"  width="1" height="1"></canvas>
 	</div>
 	<div class="col-md-6">
-		<canvas id="index_messages_graph"  width="1" height="1"></canvas>	
+		<canvas id="index_messages_graph"  width="1" height="1"></canvas>
 	</div>
 </div>
 <div class="row">
@@ -35,13 +35,13 @@
 </div>
 <script type="text/javascript" src="{{ URL::asset('js/chart.js') }}"></script>
 
-<script>		
+<script>
 var data = {
 	    labels: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre",
 	 		     "Octobre", "Novembre", "Décembre"],
 	    datasets: [
 	        {
-	            label: "Nombre des utilisateur par mois",
+	            label: "Nombre d'utilisateurs par mois",
 	            fill: false,
 	            lineTension: 0.1,
 	            backgroundColor: "rgba(75,192,192,0.4)",
@@ -67,7 +67,7 @@ var data = {
 var context = document.querySelector('#index_users_graph').getContext('2d');
 var myLineChart = new Chart(context, {
     type: 'line',
-    data: data,	   
+    data: data,
 });
 
 var data = {
@@ -101,8 +101,7 @@ var data = {
 var context = document.querySelector('#index_messages_graph').getContext('2d');
 var myLineChart = new Chart(context, {
     type: 'line',
-    data: data,	   
+    data: data,
 });
 </script>
 @stop
-

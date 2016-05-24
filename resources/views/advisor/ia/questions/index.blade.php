@@ -20,14 +20,13 @@
 				<tr>
 					<td class="question">
 						<div class="content">
-							{{ $iaq->content }}
+							{{ $iaq->content }}							
 						</div>
 					</td>
 					<td class="response">
 						<div class="content">
 							{{ $iaq->responses->isEmpty() ? "Aucune réponse n'est affecté" : $iaq->responses()->first()->text }}
 						</div>
-						...
 					</td>
 					<td>
 						<button onclick="show_ia_question({{ $iaq->id }})" data-toggle="modal" data-target="#modal" class="btn btn-info">

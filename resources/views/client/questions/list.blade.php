@@ -1,4 +1,4 @@
-<div class="tadble-responsive">
+<div class="table-responsive">
 	@if(session('status'))
 		<div class="alert alert-success">
 			{{ session('status') }}
@@ -31,7 +31,7 @@
 					<button onclick="show_question({{ $question->id }})" data-toggle = "modal" data-target="#modal" class="btn btn-info">
 						<span class="glyphicon glyphicon-eye-open"></span>
 					</button>
-                </td>
+      	</td>
 				<td>
 					<button onclick="delete_cquestion({{ $question->id }}, this)" data-toggle="modal" data-target="#delaeteModal" class="btn btn-danger">
 						<span class="glyphicon glyphicon-trash"></span>
@@ -48,19 +48,6 @@
 </div>
 
 <script type="text/javascript">
-	$('#more').click(function(e) {
-	    e.stopPropagation();
-	    $('div').css({
-	        'height': 'auto'
-	    })
-	});
-
-	$(document).click(function() {
-	    $('div').css({
-	        'height': '40px'
-	    })
-	})
-
 	function show_question(id){
 		$(".modal-title").text('Détails question')
 		$(".modal-body").load('questions/' + id);

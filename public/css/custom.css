@@ -1,5 +1,22 @@
 @CHARSET "UTF-8";
+/**
+#dialog-box{
+	height:400px;
+	overflow: scroll;
+}
 
+.message{
+}
+
+.message-bot{
+	background-color: #ffffb7;
+	color: #4f00ff;
+}
+
+.message-client{
+	background-color: #00ff80;
+}
+**/
 div .content{
 	height: 60px;
 	overflow:hidden;

@@ -18,6 +18,6 @@ class AdvisorAuth
     	if($user && $user->role == \Config::get('constants.roles.advisor')){
     		return $next($request);
     	}
-    	return redirect("/");
+    	return redirect("/login");
     }
 }

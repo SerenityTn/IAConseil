@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreateMessagesTbale extends Migration {
+class CreateMessagesTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
@@ -17,7 +17,7 @@ class CreateMessagesTbale extends Migration {
 			$table->timestamps ();
 		} );
 	}
-	
+
 	/**
 	 * Reverse the migrations.
 	 *

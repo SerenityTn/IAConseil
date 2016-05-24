@@ -12,34 +12,42 @@ class User extends Authenticatable{
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     public function questions(){
     	return $this->hasMany('App\Question')->latest();
-    }         
-    
+    }
+
+    public function cmessages(){
+      return $this->hasMany('App\Cmessage')->oldest();
+    }
+
     public function question(){
     	return $this->client_questions()->first();
     }
-    
+
     public function client_questions(){
     	return auth()->user()->questions()->where('deleted', '=', '0');
     }
-    
+
     public function check_notif(){
     	return $this->client_questions()->where('notif', '1')->count();
     }
-    
+
+    public static function filter_users(){
+      return User::where('role', request()->input('type'));
+    }
+
     public function filter_questions(){
-    	$query = $this->client_questions();    
-    	if(request()->has('state')){    		
+    	$query = $this->client_questions();
+    	if(request()->has('state')){
     		$query->has('responses', '<', '1');
     	}
     	return $query;
     }
-    
-    public function setPasswordAttribute($value){    	
+
+    public function setPasswordAttribute($value){
     	if(!empty($value)){
-    		$this->attributes['password'] = bcrypt($value);    	
+    		$this->attributes['password'] = bcrypt($value);
     	}
     }
 }

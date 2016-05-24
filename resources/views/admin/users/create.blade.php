@@ -1,4 +1,4 @@
-{!! Form::open(['route'=>'admin.users.store', 'id' => 'create_user']) !!}	
+{!! Form::open(['route'=>'admin.users.store', 'id' => 'create_user']) !!}
 		<div class="row">
 			<div class="col-sm-6 form-group">
 				{!! Form::label('nom', 'Nom*') !!}
@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-sm-6 form-group">
 				{!! Form::label('email', 'Adresse Email*') !!} {!!
-				Form::text('email', null, ['class' => 'form-control']) !!}				
+				Form::text('email', null, ['class' => 'form-control', 'email' => 'email']) !!}
 			</div>
 			<div class="col-sm-6 form-group">
 				{!! Form::label('tel', 'Téléphone*') !!}
@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-sm-6 form-group">
 				{!! Form::label('password', 'Mot de passe*') !!}
-				{!! Form::password('password', ['class' => 'form-control']) !!}				
+				{!! Form::password('password', ['class' => 'form-control']) !!}
 			</div>
 			<div
 				class="col-sm-6 form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
@@ -63,7 +63,7 @@
 			<div class="col-sm-3 form-group">
 				{!! Form::reset('Annuler', ['class' => 'form-control btn btn-warning']) !!}
 			</div>
-		</div>	
+		</div>
 {!! Form::close() !!}
 
 <script type="text/javascript" src="{{ URL::asset('js/form/custom_form.js') }}"></script>

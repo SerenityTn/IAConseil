@@ -18,6 +18,6 @@ class AdminAuth{
     	if($user && $user->role == \Config::get('constants.roles.admin')){
     		return $next($request);
     	}
-    	return redirect("/");
+    	return redirect("/login");
     }
 }

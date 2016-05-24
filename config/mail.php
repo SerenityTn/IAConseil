@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'SmartConseil@isg.com', 'name' => 'Khaireddine Amamou'],
 
     /*
     |--------------------------------------------------------------------------

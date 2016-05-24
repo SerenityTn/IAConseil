@@ -17,6 +17,6 @@ class ClientAuth{
     	if($user && ($user->role == 3 || $user->role == 4)){
     		return $next($request);
     	}
-    	return redirect("/");
+    	return redirect("/login");
     }
 }

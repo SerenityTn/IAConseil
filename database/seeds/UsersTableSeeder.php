@@ -11,6 +11,13 @@ class UsersTableSeeder extends Seeder{
      * @return void
      */
     public function run(){
+      DB::table('users')->insert([
+          'nom' => 'bot',
+          'email' => 'bot@gmail.com',
+          'password' => bcrypt('aspirine'),
+          'role' => 1,
+          'created_at' => Carbon::now()
+      ]);
     	DB::table('users')->insert([
     			'nom' => 'Administrateur',
     			'email' => 'admin@gmail.com',
@@ -31,6 +38,13 @@ class UsersTableSeeder extends Seeder{
     			'password' => bcrypt('aspirine'),
     			'role' => 3,
     			'created_at' => Carbon::now()
-    	]);    	
+    	]);
+      DB::table('users')->insert([
+          'nom' => 'Client prime',
+          'email' => 'clientprime@gmail.com',
+          'password' => bcrypt('aspirine'),
+          'role' => 4,
+          'created_at' => Carbon::now()
+      ]);
     }
 }
