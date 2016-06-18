@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  {---}
+  <category>
+    <pattern>BONJOUR</pattern>
+    <template>
+      <random>
+        <li>Bonjour</li>
+        <li>Salut</li>
+        <li>Bonjour :)</li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>SALUT</pattern>
+    <template><srai>BONJOUR</srai></template>
+  </category>
+
+  <category>
+    <pattern>saluer *</pattern>
+    <template>
+        <srai>BONJOUR</srai> <star/>
+    </template>
+  </category>
+
+  <category>
+    <pattern>CA VA</pattern>
+    <template>
+      <random>
+        <li>Très bien, et toi</li>
+        <li>Oui, Très bien, et toi ?</li>
+        <li>Je vais bien, merci</li>
+      </random>
+    </template>
+  </category>
+  <category>
+    <pattern>COMMENT VAS TU</pattern>
+    <template>
+      <srai>CA VA</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>je vais bien, merci</pattern>
+    <template>:)</template>
+  </category>
+
+
+  <category>
+    <pattern>Je m'appel *</pattern>
+    <template>Ravi de vous connaitre <set name="name"><star/></set>. Comment puis-je vous aider ?</template>
+  </category>
+
+<category>
+  <pattern>* les procédures de création d'une entreprise</pattern>
+  <template>
+    Afin de créer une entreprise vous devez considérer ses points:
+    <ul>
+      <li>Idée de projet</li>
+      <li>Structures d’appui à la création</li>
+      <li>Plan d’affaires</li>
+      <li>Financement</li>
+      <li>Formalités de création</li>
+      <li>Formalités et document utiles</li>
+      <li>Guide des Centres d’Affaires</li>
+      <li>Guide des pépinières d’entreprises</li>
+      <li>Mécanismes de financment des PME</li>
+      <li>Regime legal de creation d'entreprise</li>
+      <li>Modalités de création d'entreprises</li>
+    </ul>
+    </template>
+</category>
+
+<category>
+  <pattern>quels sont les formalités de création d'entreprise</pattern>
+  <template>
+    <ul>
+      <li>La déclaration d’investissement</li>
+      <li>Les principales formes juridiques des sociétés</li>
+      <li>La constitution des sociétés</li>
+    </ul>
+  </template>
+</category>
+
+<category>
+  <pattern>comment * la forme juridique * convient</pattern>
+  <template>Afin de répondre à cette question, je dois connaitre votre age </template>
+</category>
+
+<category>
+  <pattern>j ai * ans</pattern>
+  <template>
+    <think><set name="age"><star/></set></think>
+    <condition name="age">
+    <li value="21">Très bien, on continue notre questionnaire.</li>
+    <li value="16">Désolé vous devez avoir plus de 18 ans.</li>
+  </condition>
+  </template>
+</category>
+
+</aiml>
